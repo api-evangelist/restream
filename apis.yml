@@ -1,67 +1,55 @@
+aid: restream
 name: Restream
-description: 'Restream is a multistreaming service that allows content creators to  simultaneously broadcast live video to multiple platforms like YouTube,  Facebook, Twitch, LinkedIn, and more. The platform provides APIs for  managing streams, channels, and user accounts.
-
-  '
-image: https://restream.io/favicon.ico
-url: https://restream.io
-created: '2025-03-15'
-modified: '2025-03-15'
-specificationVersion: '0.18'
+description: >-
+  Restream is a multistreaming service that allows content creators to
+  simultaneously broadcast live video to multiple platforms like YouTube,
+  Facebook, Twitch, LinkedIn, and more. The platform provides APIs for
+  managing streams, channels, and user accounts.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- video streaming
-- live streaming
-- multistreaming
-- broadcast
-- social media
+  - Video Streaming
+  - Live Streaming
+  - Multistreaming
+  - Broadcast
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/restream/refs/heads/main/apis.yml
+created: '2025-03-15'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 apis:
-- name: Restream API
-  description: 'REST API for managing Restream channels, streams, and user settings.  Enables developers to integrate multistreaming capabilities into their  applications.
-
-    '
-  image: https://restream.io/favicon.ico
-  humanURL: https://developers.restream.io
-  baseURL: https://api.restream.io/v2
-  tags:
-  - streaming
-  - channels
-  - users
-  - live video
-  properties:
-  - type: Documentation
-    url: https://developers.restream.io/docs
-  - type: OpenAPI
-    url: https://api.restream.io/v2/openapi.json
-  - type: Authentication
-    url: https://developers.restream.io/docs/authentication
-  - type: Rate Limits
-    url: https://developers.restream.io/docs/rate-limits
-  - type: Webhooks
-    url: https://developers.restream.io/docs/webhooks
-  - type: Changelog
-    url: https://developers.restream.io/changelog
-  - type: Status
-    url: https://status.restream.io
-  contact:
-  - type: Support
-    url: https://support.restream.io
-  - type: Email
-    url: mailto:api@restream.io
-  - type: Twitter
-    url: https://twitter.com/restreamio
+  - aid: restream:restream-api
+    name: Restream API
+    description: >-
+      REST API for managing Restream channels, streams, and user settings.
+      Enables developers to integrate multistreaming capabilities into their
+      applications.
+    humanURL: https://developers.restream.io
+    tags:
+      - Streaming
+      - Channels
+      - Users
+      - Live Video
+    properties:
+      - type: Documentation
+        url: https://developers.restream.io/docs
+      - type: Authentication
+        url: https://developers.restream.io/docs/authentication
 common:
-- type: Terms of Service
-  url: https://restream.io/terms
-- type: Privacy Policy
-  url: https://restream.io/privacy
-- type: Sign Up
-  url: https://app.restream.io/sign-up
-- type: Login
-  url: https://app.restream.io/login
-- type: Blog
-  url: https://restream.io/blog
-- type: Pricing
-  url: https://restream.io/pricing
+  - type: TermsOfService
+    url: https://restream.io/terms
+  - type: PrivacyPolicy
+    url: https://restream.io/privacy
+  - type: SignUp
+    url: https://app.restream.io/sign-up
+  - type: Login
+    url: https://app.restream.io/login
+  - type: Blog
+    url: https://restream.io/blog
+  - type: Pricing
+    url: https://restream.io/pricing
+  - type: Website
+    url: https://restream.io
 maintainers:
-- name: Restream
-  email: support@restream.io
-  url: https://restream.io
+  - FN: Kin Lane
+    email: kin@apievangelist.com
