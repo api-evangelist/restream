@@ -8,10 +8,10 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Video Streaming
+  - Broadcast
   - Live Streaming
   - Multistreaming
-  - Broadcast
+  - Video Streaming
 url: >-
   https://raw.githubusercontent.com/api-evangelist/restream/refs/heads/main/apis.yml
 created: '2025-03-15'
@@ -26,10 +26,10 @@ apis:
       applications.
     humanURL: https://developers.restream.io
     tags:
-      - Streaming
       - Channels
-      - Users
       - Live Video
+      - Streaming
+      - Users
     properties:
       - type: Documentation
         url: https://developers.restream.io/docs
