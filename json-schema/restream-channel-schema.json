@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.restream.io/schemas/channel",
+  "title": "Channel",
+  "description": "A Restream channel representing a connected destination streaming platform account.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique channel identifier"
+    },
+    "streamingPlatformId": {
+      "type": "integer",
+      "description": "ID of the associated streaming platform (e.g., 1=Twitch, 5=YouTube)"
+    },
+    "embedUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Embedded player URL for the channel"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Channel URL on the destination platform"
+    },
+    "identifier": {
+      "type": "string",
+      "description": "Platform-specific channel identifier (username, channel ID, etc.)"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Human-readable channel display name"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the channel is currently active and will receive the stream"
+    }
+  },
+  "required": ["id", "streamingPlatformId", "active"],
+  "additionalProperties": false
+}

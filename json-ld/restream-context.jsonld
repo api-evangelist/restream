@@ -1,0 +1,53 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "restream": "https://api.restream.io/v2/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Channel": "schema:BroadcastChannel",
+    "Platform": "schema:BroadcastService",
+    "Event": "schema:BroadcastEvent",
+    "UserProfile": "schema:Person",
+    "StreamKey": "restream:StreamKey",
+
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "displayName": "schema:alternateName",
+    "active": "schema:active",
+    "title": "schema:headline",
+    "status": "schema:eventStatus",
+    "startedAt": {
+      "@id": "schema:startDate",
+      "@type": "xsd:dateTime"
+    },
+    "endedAt": {
+      "@id": "schema:endDate",
+      "@type": "xsd:dateTime"
+    },
+    "streamingPlatformId": {
+      "@id": "restream:streamingPlatformId",
+      "@type": "xsd:integer"
+    },
+    "embedUrl": {
+      "@id": "schema:embedUrl",
+      "@type": "@id"
+    },
+    "streamKey": "restream:streamKey",
+    "srtUrl": "restream:srtUrl",
+    "channels": {
+      "@id": "restream:channels",
+      "@container": "@list"
+    },
+    "image": "schema:image",
+    "identifier": "schema:identifier",
+    "email": "schema:email",
+    "username": "schema:alternateName",
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

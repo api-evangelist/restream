@@ -1,0 +1,13 @@
+{
+  "name": "Channel",
+  "description": "Represents a connected streaming platform destination in a Restream account.",
+  "fields": [
+    { "name": "id", "type": "integer", "description": "Unique channel identifier", "required": true },
+    { "name": "streamingPlatformId", "type": "integer", "description": "Associated platform ID", "required": true },
+    { "name": "embedUrl", "type": "string", "description": "Embed player URL", "required": false },
+    { "name": "url", "type": "string", "description": "Channel URL on destination platform", "required": false },
+    { "name": "identifier", "type": "string", "description": "Platform-specific channel identifier", "required": false },
+    { "name": "displayName", "type": "string", "description": "Channel display name", "required": false },
+    { "name": "active", "type": "boolean", "description": "Whether channel is active", "required": true }
+  ]
+}

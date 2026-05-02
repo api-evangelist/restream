@@ -1,0 +1,13 @@
+{
+  "name": "Event",
+  "description": "Represents a live streaming event in Restream, coordinating simultaneous multistreaming across multiple platforms.",
+  "fields": [
+    { "name": "id", "type": "string", "description": "Unique event identifier", "required": true },
+    { "name": "title", "type": "string", "description": "Event title", "required": false },
+    { "name": "description", "type": "string", "description": "Event description", "required": false },
+    { "name": "status", "type": "string", "description": "Event status: upcoming, in-progress, or completed", "required": true },
+    { "name": "startedAt", "type": "string", "description": "ISO 8601 start time", "required": false },
+    { "name": "endedAt", "type": "string", "description": "ISO 8601 end time", "required": false },
+    { "name": "channels", "type": "array[integer]", "description": "Channel IDs included in this event", "required": false }
+  ]
+}

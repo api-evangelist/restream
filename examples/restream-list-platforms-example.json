@@ -1,0 +1,44 @@
+{
+  "operationId": "listPlatforms",
+  "summary": "List All Platforms",
+  "request": {
+    "method": "GET",
+    "url": "https://api.restream.io/v2/platform/all",
+    "headers": {}
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": [
+      {
+        "id": 1,
+        "name": "Twitch",
+        "url": "https://twitch.tv",
+        "image": {
+          "png": "https://restream.io/assets/platforms/twitch.png",
+          "svg": "https://restream.io/assets/platforms/twitch.svg"
+        }
+      },
+      {
+        "id": 5,
+        "name": "YouTube",
+        "url": "https://youtube.com",
+        "image": {
+          "png": "https://restream.io/assets/platforms/youtube.png",
+          "svg": "https://restream.io/assets/platforms/youtube.svg"
+        }
+      },
+      {
+        "id": 14,
+        "name": "Facebook",
+        "url": "https://facebook.com",
+        "image": {
+          "png": "https://restream.io/assets/platforms/facebook.png",
+          "svg": "https://restream.io/assets/platforms/facebook.svg"
+        }
+      }
+    ]
+  }
+}

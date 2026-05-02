@@ -1,0 +1,21 @@
+{
+  "operationId": "getStreamKey",
+  "summary": "Get Stream Key",
+  "request": {
+    "method": "GET",
+    "url": "https://api.restream.io/v2/user/streamKey",
+    "headers": {
+      "Authorization": "Bearer {access_token}"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "streamKey": "re_abc123_def456xyz",
+      "srtUrl": "srt://live.restream.io:5000?streamid=re_abc123_def456xyz"
+    }
+  }
+}

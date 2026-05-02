@@ -1,0 +1,137 @@
+name: Restream Vocabulary
+description: >-
+  Domain vocabulary for the Restream multistreaming platform, covering live
+  streaming terminology, platform integrations, event management, and chat
+  relay concepts.
+tags:
+  - Broadcast
+  - Live Streaming
+  - Multistreaming
+  - Vocabulary
+created: '2026-05-02'
+modified: '2026-05-02'
+terms:
+  - term: Multistreaming
+    definition: >-
+      The simultaneous broadcasting of a live video stream to multiple
+      streaming platforms at the same time using a single video source.
+    tags:
+      - Core Concept
+      - Streaming
+
+  - term: Channel
+    definition: >-
+      A connected destination account on a streaming platform (e.g., a Twitch
+      channel, YouTube channel) associated with a Restream user account. Channels
+      can be individually enabled or disabled per stream.
+    tags:
+      - Core Concept
+      - Streaming
+
+  - term: Stream Key
+    definition: >-
+      A unique authentication credential (RTMP key) used to authenticate a
+      streaming encoder with the Restream ingest server. Format: re_xxx_xxx.
+    tags:
+      - Authentication
+      - Streaming
+
+  - term: SRT URL
+    definition: >-
+      Secure Reliable Transport URL for low-latency streaming to Restream.
+      Available to qualifying accounts as an alternative to RTMP.
+    tags:
+      - Protocols
+      - Streaming
+
+  - term: Event
+    definition: >-
+      A discrete live streaming session in Restream. Events progress through
+      states: upcoming, in-progress, and completed. Events can be associated
+      with specific channels.
+    tags:
+      - Core Concept
+      - Events
+
+  - term: Platform
+    definition: >-
+      A supported third-party streaming destination service (e.g., Twitch,
+      YouTube, Facebook Live, LinkedIn, DLive) that Restream can multistream to.
+    tags:
+      - Integrations
+      - Streaming
+
+  - term: OAuth2
+    definition: >-
+      The authorization framework used by the Restream API. Uses authorization
+      code flow with scopes including profile.read, channels.read, channels.write,
+      stream.read, events.read, events.write, and chat.read.
+    tags:
+      - Authentication
+      - Security
+
+  - term: Access Token
+    definition: >-
+      Short-lived OAuth2 credential with 1-hour validity used to authenticate
+      Restream API requests. Included as a Bearer token in the Authorization header.
+    tags:
+      - Authentication
+      - Security
+
+  - term: Refresh Token
+    definition: >-
+      Long-lived OAuth2 credential with 1-year validity used to obtain new
+      access tokens without requiring user re-authorization.
+    tags:
+      - Authentication
+      - Security
+
+  - term: Chat Relay
+    definition: >-
+      A Restream Chat feature that forwards incoming chat messages from one
+      streaming platform to all other connected platforms, creating a unified
+      chat experience using the Restream Bot identity.
+    tags:
+      - Chat
+      - Features
+
+  - term: Ingest
+    definition: >-
+      The process of receiving a live video stream from an encoder (OBS, XSplit,
+      etc.) before distributing it to connected streaming platforms. Restream
+      operates ingest servers globally.
+    tags:
+      - Infrastructure
+      - Streaming
+
+  - term: RTMP
+    definition: >-
+      Real-Time Messaging Protocol, the primary streaming protocol used to send
+      live video from an encoder to Restream's ingest servers.
+    tags:
+      - Protocols
+      - Streaming
+
+  - term: WebSocket
+    definition: >-
+      Full-duplex communication protocol used by Restream for real-time streaming
+      updates (wss://streaming.api.restream.io) and chat events.
+    tags:
+      - Protocols
+      - Real-Time
+
+  - term: Event Source
+    definition: >-
+      In the Restream Chat API, an event source is a platform connection from
+      which chat messages are received (Twitch, YouTube, Facebook, Discord, etc.).
+    tags:
+      - Chat
+      - Integrations
+
+  - term: Channel Meta
+    definition: >-
+      Stream metadata associated with a channel, including title, description,
+      and tags. Updated via PATCH /user/channel/{id}/meta.
+    tags:
+      - Channels
+      - Metadata

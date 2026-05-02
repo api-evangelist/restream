@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.restream.io/schemas/platform",
+  "title": "Platform",
+  "description": "A streaming platform supported by Restream for multistreaming destinations.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique platform identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Platform name (e.g., Twitch, YouTube, Facebook)"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Platform website URL"
+    },
+    "image": {
+      "type": "object",
+      "description": "Platform logo images",
+      "properties": {
+        "png": {
+          "type": "string",
+          "format": "uri",
+          "description": "PNG image URL"
+        },
+        "svg": {
+          "type": "string",
+          "format": "uri",
+          "description": "SVG image URL"
+        }
+      }
+    }
+  },
+  "required": ["id", "name"],
+  "additionalProperties": false
+}

@@ -1,0 +1,26 @@
+{
+  "operationId": "getChannel",
+  "summary": "Get Channel",
+  "request": {
+    "method": "GET",
+    "url": "https://api.restream.io/v2/user/channel/123456",
+    "headers": {
+      "Authorization": "Bearer {access_token}"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 123456,
+      "streamingPlatformId": 1,
+      "embedUrl": "https://player.twitch.tv/?channel=mystream",
+      "url": "https://twitch.tv/mystream",
+      "identifier": "mystream",
+      "displayName": "My Stream",
+      "active": true
+    }
+  }
+}

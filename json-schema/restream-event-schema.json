@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.restream.io/schemas/event",
+  "title": "Event",
+  "description": "A Restream live streaming event, which can be scheduled, in-progress, or historical.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique event identifier"
+    },
+    "title": {
+      "type": "string",
+      "description": "Event title displayed across all streaming platforms"
+    },
+    "description": {
+      "type": "string",
+      "description": "Event description"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["upcoming", "in-progress", "completed"],
+      "description": "Current status of the event"
+    },
+    "startedAt": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the event started"
+    },
+    "endedAt": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the event ended"
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "List of channel IDs included in this event"
+    }
+  },
+  "required": ["id", "status"],
+  "additionalProperties": false
+}
