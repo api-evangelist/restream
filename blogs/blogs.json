@@ -1,0 +1,13 @@
+{
+  "repo": "restream",
+  "feeds": [
+    {
+      "source": "https://restream.io/blog",
+      "feed_url": "https://restream.io/blog/rss/",
+      "saved": 10,
+      "title": "Restream | Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:34:55Z"
+}
