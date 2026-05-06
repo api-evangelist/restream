@@ -4,7 +4,8 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Restream
 providerId: restream
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Broadcast
   - Chat
@@ -12,158 +13,207 @@ tags:
   - Live Streaming
   - Multistreaming
   - Video Streaming
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: Restream sells a tiered live-multistreaming SaaS subscription. Tiers gate the number of
+  simultaneous destination channels, branding, recording quality, dual-format streaming, embedded-player
+  capacity, and team seats. The Restream developer API (channels, events, chat, streaming updates) is
+  available to authenticated Restream users; access scales with the underlying subscription. Annual prices
+  shown below are the published billed-annually rates.
+sources:
+  - https://restream.io/pricing
+  - https://developers.restream.io/
 plans:
   - id: restream-free
     name: Free
     type: freemium
-    description: Free entry tier for the Restream API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    description: Free tier — stream to up to 2 destinations simultaneously with Restream branding.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
         timeFrame: month
         geo: global
-        domains:
-          - https://api.restream.io/v2
-          - wss://streaming.api.restream.io
-          - wss://chat.api.restream.io
         unit: 1
-        price: '0.00'
+        price: '$0'
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
+      - label: Simultaneous Channels
+        name: simultaneous_channels
+        type: quota
+        metric: channel
+        limit: 2
+        timeFrame: usage
         geo: global
-        domains:
-          - https://api.restream.io/v2
-          - wss://streaming.api.restream.io
-          - wss://chat.api.restream.io
         unit: 1
-        price: '0.00'
+        price: '$0'
         userMultiplied: false
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Restream API
-      - name: Restream Streaming Updates API
-      - name: Restream Chat API
-  - id: restream-pro
+      - name: Stream to 2 channels simultaneously
+      - name: Restream branding
+  - id: restream-standard
+    name: Standard
+    type: subscription
+    description: Standard tier — up to 3 simultaneous channels, no Restream branding, optional Clips
+      add-on.
+    entries:
+      - label: Subscription (billed annually)
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$16/mo billed annually'
+        userMultiplied: false
+      - label: Simultaneous Channels
+        name: simultaneous_channels
+        type: quota
+        metric: channel
+        limit: 3
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Clips add-on (50/mo)
+        name: clips_addon
+        type: subscription
+        metric: clip
+        limit: 50
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$19/mo'
+        userMultiplied: false
+    elements:
+      - name: Up to 3 simultaneous channels
+      - name: No Restream branding
+      - name: Guest channel capability
+      - name: Optional Clips add-on
+  - id: restream-professional
     name: Professional
-    type: paid
-    description: Production tier for Restream. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+    type: subscription
+    description: Professional tier — 5 simultaneous channels, Full HD 1080p streaming and 4K recording,
+      dual-format (vertical + horizontal) streaming.
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
+      - label: Subscription (billed annually)
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$39/mo billed annually'
+        userMultiplied: false
+      - label: Simultaneous Channels
+        name: simultaneous_channels
         type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
+        metric: channel
+        limit: 5
+        timeFrame: usage
         geo: global
-        domains:
-          - https://api.restream.io/v2
-          - wss://streaming.api.restream.io
-          - wss://chat.api.restream.io
         unit: 1
-        price: TBD
+        price: included
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
+      - label: Clips add-on (100/mo)
+        name: clips_addon
+        type: subscription
+        metric: clip
         limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.restream.io/v2
-          - wss://streaming.api.restream.io
-          - wss://chat.api.restream.io
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://api.restream.io/v2
-          - wss://streaming.api.restream.io
-          - wss://chat.api.restream.io
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: '$29/mo'
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Restream API
-      - name: Restream Streaming Updates API
-      - name: Restream Chat API
+      - name: 5 simultaneous channels
+      - name: Full HD 1080p streaming
+      - name: 4K recording
+      - name: Dual-format (vertical and horizontal) streaming
+  - id: restream-business
+    name: Business
+    type: subscription
+    description: Business tier — 8 simultaneous channels, embedded website player up to 1,000 concurrent
+      viewers, 2 included team seats, co-producer mode, team workspaces.
+    entries:
+      - label: Subscription (billed annually)
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$199/mo billed annually'
+        userMultiplied: false
+      - label: Simultaneous Channels
+        name: simultaneous_channels
+        type: quota
+        metric: channel
+        limit: 8
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Embedded Player Concurrent Viewers
+        name: embedded_player_viewers
+        type: quota
+        metric: viewer
+        limit: 1000
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Included Team Seats
+        name: included_team_seats
+        type: quota
+        metric: seat
+        limit: 2
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Clips add-on (250/mo)
+        name: clips_addon
+        type: subscription
+        metric: clip
+        limit: 250
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$59/mo'
+        userMultiplied: false
+    elements:
+      - name: 8 simultaneous channels
+      - name: 1,000 concurrent embedded-player viewers
+      - name: 2 included team seats
+      - name: Co-producer mode
+      - name: Team workspaces
   - id: restream-enterprise
     name: Enterprise
     type: enterprise
-    description: Custom-negotiated tier for Restream. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
+    description: Enterprise tier — custom pricing including SSO and security review, multiple workspaces,
+      and dedicated account management.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Enterprise Agreement
+        name: enterprise_agreement
+        type: subscription
+        metric: month
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains:
-          - https://api.restream.io/v2
-          - wss://streaming.api.restream.io
-          - wss://chat.api.restream.io
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.restream.io/v2
-          - wss://streaming.api.restream.io
-          - wss://chat.api.restream.io
-        unit: 1
-        price: custom
+        price: contact sales
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Restream API
-      - name: Restream Streaming Updates API
-      - name: Restream Chat API
+      - name: SSO and security review
+      - name: Multiple workspaces
+      - name: Dedicated account management
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

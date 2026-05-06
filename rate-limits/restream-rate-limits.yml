@@ -4,97 +4,37 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Restream
 providerId: restream
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Broadcast
-  - Chat
-  - Content Delivery
+  - Rate Limiting
   - Live Streaming
   - Multistreaming
-  - Video Streaming
-  - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Restream API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
+description: Restream's developer documentation describes the REST API (channels, events, users), the
+  Streaming Updates WebSocket, and the Chat WebSocket, but does not publish per-second / per-minute rate-limit
+  numbers. The functional product caps that drive consumption (simultaneous channels, embedded-player
+  viewers, team seats) live in the subscription plan rather than as documented HTTP rate limits.
+sources:
+  - https://developers.restream.io/
+  - https://restream.io/pricing
+notes: No public rate-limit numbers are published on the Restream developer portal. Plan-tied caps
+  (simultaneous channels, viewers, seats) belong in plans/. Numbers below reflect what is actually documented.
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Restream API
-      - Restream Streaming Updates API
-      - Restream Chat API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Restream API
-      - Restream Streaming Updates API
-      - Restream Chat API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Restream API
-      - Restream Streaming Updates API
-      - Restream Chat API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Restream API
-      - Restream Streaming Updates API
-      - Restream Chat API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Restream API
-      - Restream Streaming Updates API
-      - Restream Chat API
+  - name: REST API throttling
+    scope: account
+    metric: varies
+    limit: 'see https://developers.restream.io/ — not numerically published'
+  - name: Simultaneous destination channels (plan-bound)
+    scope: account
+    metric: concurrent_streams
+    limit: 'depends on plan: Free 2, Standard 3, Professional 5, Business 8, Enterprise custom'
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Plan-Bound Concurrency
+    description: The most consequential consumption ceiling is the simultaneous-channel cap defined by
+      the active subscription tier rather than HTTP-level throttling.
+  - name: OAuth2-Scoped Access
+    description: Access to Restream APIs is OAuth2-scoped per user, so limits and behavior should be
+      treated as per-user-account rather than global.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
