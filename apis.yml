@@ -98,6 +98,70 @@ common:
     url: https://developers.restream.io/guide/getting-started
   - type: GitHub Organization
     url: https://github.com/restreamio
+  - type: Integrations
+    url: https://restream.io/integrations/
+integrations:
+  - name: YouTube
+  - name: Facebook
+  - name: Twitch
+  - name: LinkedIn
+  - name: TikTok
+  - name: Instagram
+  - name: Kick
+  - name: Restream Studio
+  - name: OBS
+  - name: Zoom
+  - name: vMix
+  - name: Streamlabs
+  - name: Rumble
+  - name: Trovo
+  - name: Telegram
+  - name: Ecamm
+  - name: XSplit
+  - name: GoPro
+  - name: Microsoft Teams (as software)
+  - name: Microsoft Teams (as platform)
+  - name: Vimeo
+  - name: Steam
+  - name: Elgato Stream Deck
+  - name: Dropbox
+  - name: Google Drive
+  - name: Descript
+  - name: WooCommerce
+  - name: Wix
+  - name: Shopify
+  - name: Amazon
+  - name: Etsy
+  - name: Mixcloud
+  - name: Amazon Live
+  - name: Dailymotion
+  - name: Mux
+  - name: Substack
+  - name: Capture card
+  - name: Xbox
+  - name: PlayStation
+  - name: Wirecast Go
+  - name: Larix Broadcaster
+  - name: Mobile Streamlabs
+  - name: TriCaster
+  - name: Wirecast
+  - name: LiveU
+  - name: Zhanqi.tv
+  - name: Wowza
+  - name: Vaughn Live
+  - name: Picarto.TV
+  - name: Nonolive
+  - name: Nimo TV
+  - name: Naver TV
+  - name: Major League Gaming
+  - name: KakaoTV
+  - name: Huya
+  - name: FC2 Live
+  - name: Douyu
+  - name: Breakers.TV
+  - name: Bilibili
+  - name: Akamai
+  - name: SOOP
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
