@@ -96,7 +96,7 @@ common:
     url: https://developers.restream.io
   - type: Authentication
     url: https://developers.restream.io/guide/getting-started
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/restreamio
   - type: Integrations
     url: https://restream.io/integrations/
