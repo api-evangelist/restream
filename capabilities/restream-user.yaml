@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Restream API — User
+  description: 'Restream API — User. 2 operations. Lead operation: Refresh OAuth Token. Self-contained Naftiko capability
+    covering one Restream business surface.'
+  tags:
+  - Restream
+  - User
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RESTREAM_API_KEY: RESTREAM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: restream-user
+    baseUri: https://api.restream.io/v2
+    description: Restream API — User business capability. Self-contained, no shared references.
+    resources:
+    - name: oauth-token
+      path: /oauth/token
+      operations:
+      - name: refreshtoken
+        method: POST
+        description: Refresh OAuth Token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: user-profile
+      path: /user/profile
+      operations:
+      - name: getuserprofile
+        method: GET
+        description: Get User Profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.RESTREAM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: restream-user-rest
+    port: 8080
+    description: REST adapter for Restream API — User. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/oauth/token
+      name: oauth-token
+      description: REST surface for oauth-token.
+      operations:
+      - method: POST
+        name: refreshtoken
+        description: Refresh OAuth Token
+        call: restream-user.refreshtoken
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/profile
+      name: user-profile
+      description: REST surface for user-profile.
+      operations:
+      - method: GET
+        name: getuserprofile
+        description: Get User Profile
+        call: restream-user.getuserprofile
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: restream-user-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Restream API — User. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: refresh-oauth-token
+      description: Refresh OAuth Token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: restream-user.refreshtoken
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user-profile
+      description: Get User Profile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: restream-user.getuserprofile
+      outputParameters:
+      - type: object
+        mapping: $.

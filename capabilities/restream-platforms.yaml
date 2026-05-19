@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Restream API — Platforms
+  description: 'Restream API — Platforms. 1 operations. Lead operation: List All Platforms. Self-contained Naftiko capability
+    covering one Restream business surface.'
+  tags:
+  - Restream
+  - Platforms
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RESTREAM_API_KEY: RESTREAM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: restream-platforms
+    baseUri: https://api.restream.io/v2
+    description: Restream API — Platforms business capability. Self-contained, no shared references.
+    resources:
+    - name: platform-all
+      path: /platform/all
+      operations:
+      - name: listplatforms
+        method: GET
+        description: List All Platforms
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.RESTREAM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: restream-platforms-rest
+    port: 8080
+    description: REST adapter for Restream API — Platforms. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/platform/all
+      name: platform-all
+      description: REST surface for platform-all.
+      operations:
+      - method: GET
+        name: listplatforms
+        description: List All Platforms
+        call: restream-platforms.listplatforms
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: restream-platforms-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Restream API — Platforms. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-all-platforms
+      description: List All Platforms
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: restream-platforms.listplatforms
+      outputParameters:
+      - type: object
+        mapping: $.

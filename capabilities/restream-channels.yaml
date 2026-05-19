@@ -1,0 +1,238 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Restream API — Channels
+  description: 'Restream API — Channels. 5 operations. Lead operation: List All Channels. Self-contained Naftiko capability
+    covering one Restream business surface.'
+  tags:
+  - Restream
+  - Channels
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RESTREAM_API_KEY: RESTREAM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: restream-channels
+    baseUri: https://api.restream.io/v2
+    description: Restream API — Channels business capability. Self-contained, no shared references.
+    resources:
+    - name: user-channel-all
+      path: /user/channel/all
+      operations:
+      - name: listchannels
+        method: GET
+        description: List All Channels
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: user-channel-id
+      path: /user/channel/{id}
+      operations:
+      - name: getchannel
+        method: GET
+        description: Get Channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: Channel identifier
+          required: true
+      - name: updatechannel
+        method: PATCH
+        description: Update Channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: Channel identifier
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: user-channel-id-meta
+      path: /user/channel/{id}/meta
+      operations:
+      - name: getchannelmeta
+        method: GET
+        description: Get Channel Meta
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: Channel identifier
+          required: true
+      - name: updatechannelmeta
+        method: PATCH
+        description: Update Channel Meta
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: Channel identifier
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.RESTREAM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: restream-channels-rest
+    port: 8080
+    description: REST adapter for Restream API — Channels. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/user/channel/all
+      name: user-channel-all
+      description: REST surface for user-channel-all.
+      operations:
+      - method: GET
+        name: listchannels
+        description: List All Channels
+        call: restream-channels.listchannels
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/channel/{id}
+      name: user-channel-id
+      description: REST surface for user-channel-id.
+      operations:
+      - method: GET
+        name: getchannel
+        description: Get Channel
+        call: restream-channels.getchannel
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatechannel
+        description: Update Channel
+        call: restream-channels.updatechannel
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/channel/{id}/meta
+      name: user-channel-id-meta
+      description: REST surface for user-channel-id-meta.
+      operations:
+      - method: GET
+        name: getchannelmeta
+        description: Get Channel Meta
+        call: restream-channels.getchannelmeta
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatechannelmeta
+        description: Update Channel Meta
+        call: restream-channels.updatechannelmeta
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: restream-channels-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Restream API — Channels. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-all-channels
+      description: List All Channels
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: restream-channels.listchannels
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-channel
+      description: Get Channel
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: restream-channels.getchannel
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-channel
+      description: Update Channel
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: restream-channels.updatechannel
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-channel-meta
+      description: Get Channel Meta
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: restream-channels.getchannelmeta
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-channel-meta
+      description: Update Channel Meta
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: restream-channels.updatechannelmeta
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

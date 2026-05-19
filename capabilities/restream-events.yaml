@@ -1,0 +1,233 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Restream API — Events
+  description: 'Restream API — Events. 5 operations. Lead operation: List Event History. Self-contained Naftiko capability
+    covering one Restream business surface.'
+  tags:
+  - Restream
+  - Events
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RESTREAM_API_KEY: RESTREAM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: restream-events
+    baseUri: https://api.restream.io/v2
+    description: Restream API — Events business capability. Self-contained, no shared references.
+    resources:
+    - name: user-event-history
+      path: /user/event/history
+      operations:
+      - name: listeventhistory
+        method: GET
+        description: List Event History
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of events to return
+        - name: offset
+          in: query
+          type: integer
+          description: Number of events to skip for pagination
+    - name: user-event-in-progress
+      path: /user/event/in-progress
+      operations:
+      - name: listinprogressevents
+        method: GET
+        description: List In-Progress Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: user-event-upcoming
+      path: /user/event/upcoming
+      operations:
+      - name: listupcomingevents
+        method: GET
+        description: List Upcoming Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: user-event-id
+      path: /user/event/{id}
+      operations:
+      - name: getevent
+        method: GET
+        description: Get Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Event identifier
+          required: true
+    - name: user-event-id-streamKey
+      path: /user/event/{id}/streamKey
+      operations:
+      - name: geteventstreamkey
+        method: GET
+        description: Get Event Stream Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Event identifier
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.RESTREAM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: restream-events-rest
+    port: 8080
+    description: REST adapter for Restream API — Events. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/user/event/history
+      name: user-event-history
+      description: REST surface for user-event-history.
+      operations:
+      - method: GET
+        name: listeventhistory
+        description: List Event History
+        call: restream-events.listeventhistory
+        with:
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/event/in-progress
+      name: user-event-in-progress
+      description: REST surface for user-event-in-progress.
+      operations:
+      - method: GET
+        name: listinprogressevents
+        description: List In-Progress Events
+        call: restream-events.listinprogressevents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/event/upcoming
+      name: user-event-upcoming
+      description: REST surface for user-event-upcoming.
+      operations:
+      - method: GET
+        name: listupcomingevents
+        description: List Upcoming Events
+        call: restream-events.listupcomingevents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/event/{id}
+      name: user-event-id
+      description: REST surface for user-event-id.
+      operations:
+      - method: GET
+        name: getevent
+        description: Get Event
+        call: restream-events.getevent
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/event/{id}/streamkey
+      name: user-event-id-streamkey
+      description: REST surface for user-event-id-streamKey.
+      operations:
+      - method: GET
+        name: geteventstreamkey
+        description: Get Event Stream Key
+        call: restream-events.geteventstreamkey
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: restream-events-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Restream API — Events. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-event-history
+      description: List Event History
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: restream-events.listeventhistory
+      with:
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-progress-events
+      description: List In-Progress Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: restream-events.listinprogressevents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-upcoming-events
+      description: List Upcoming Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: restream-events.listupcomingevents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-event
+      description: Get Event
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: restream-events.getevent
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-event-stream-key
+      description: Get Event Stream Key
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: restream-events.geteventstreamkey
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
