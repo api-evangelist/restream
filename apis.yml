@@ -101,6 +101,8 @@ common:
   url: https://github.com/restreamio
 - type: Integrations
   url: https://restream.io/integrations/
+- type: LLMsTxt
+  url: https://developers.restream.io/llms.txt
 integrations:
 - name: YouTube
 - name: Facebook
