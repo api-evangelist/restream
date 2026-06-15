@@ -1,0 +1,415 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Restream API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Platforms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Platforms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/platform/all"
+          },
+          "docs": "Returns all streaming platforms supported by Restream. This is a public endpoint that does not require authentication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get User Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/profile",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve the authenticated user's profile information."
+        },
+        {
+          "info": {
+            "name": "Refresh OAuth Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.restream.io/v2/oauth/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "refresh_token",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Obtain a new access token using a refresh token via the OAuth2 refresh_token grant."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stream Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Stream Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/streamKey",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve the authenticated user's stream key and SRT URL for live streaming."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/channel/all",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve all channels associated with the authenticated user's account."
+        },
+        {
+          "info": {
+            "name": "Get Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/channel/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Channel identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a specific channel by its ID."
+        },
+        {
+          "info": {
+            "name": "Update Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.restream.io/v2/user/channel/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Channel identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update settings for a specific channel."
+        },
+        {
+          "info": {
+            "name": "Get Channel Meta",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/channel/:id/meta",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Channel identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve metadata for a specific channel."
+        },
+        {
+          "info": {
+            "name": "Update Channel Meta",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.restream.io/v2/user/channel/:id/meta",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Channel identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update metadata for a specific channel."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Upcoming Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/event/upcoming",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve all upcoming live events for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "List In-Progress Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/event/in-progress",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve all currently active live events for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "List Event History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/event/history",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of events to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of events to skip for pagination"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve historical live events for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Get Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/event/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve details for a specific event by its ID."
+        },
+        {
+          "info": {
+            "name": "Get Event Stream Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/event/:id/streamKey",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve the stream key for a specific event."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

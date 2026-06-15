@@ -1,114 +1,109 @@
-# Restream
+# Restream (restream)
 
-Restream is a multistreaming platform that enables content creators and businesses to simultaneously broadcast live video to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. The platform provides REST APIs and WebSocket connections for managing streams, channels, events, and chat.
+Restream is a multistreaming platform that enables content creators and businesses to simultaneously broadcast live video to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. The platform offers REST APIs and WebSocket connections for managing streams, channels, events, and chat.
 
-**Human URL:** [https://restream.io](https://restream.io)
-**Developer Portal:** [https://developers.restream.io](https://developers.restream.io)
-**Base URL:** `https://api.restream.io/v2`
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/restream/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/restream/refs/heads/main/apis.yml)
+
+## Scope
+
+- **Type:** Index
+
+## Tags
+
+- Broadcast
+- Chat
+- Content Delivery
+- Live Streaming
+- Multistreaming
+- Video Streaming
+
+## Timestamps
+
+- **Created:** 2025-03-15
+- **Modified:** 2026-05-19
 
 ## APIs
 
-### Restream API (REST)
+### Restream API
 
-REST API for managing Restream channels, stream keys, events, and user profiles. Uses OAuth2 authorization code flow with scopes for profile, channels, streams, events, and chat.
+REST API for managing Restream channels, stream keys, events, and user profiles. Uses OAuth2 authorization code flow for authentication with scopes for profile, channels, streams, events, and chat. Base URL is https://api.restream.io/v2.
 
-- **Documentation:** [https://developers.restream.io/docs](https://developers.restream.io/docs)
-- **Authentication:** [OAuth2 Authorization Code](https://developers.restream.io/guide/getting-started)
-- **OpenAPI:** [openapi/restream-openapi.yml](openapi/restream-openapi.yml)
+- **Human URL:** [https://developers.restream.io](https://developers.restream.io)
+- **Base URL:** `https://api.restream.io/v2`
 
-### Restream Streaming Updates API (WebSocket)
+#### Tags
 
-Real-time WebSocket stream for incoming/outgoing stream events and viewer statistics. Connect to `wss://streaming.api.restream.io/ws?accessToken={token}`.
+- Channels
+- Events
+- Live Video
+- OAuth2
+- Streaming
+- Users
 
-- **Documentation:** [https://developers.restream.io/private-api/streaming-updates](https://developers.restream.io/private-api/streaming-updates)
+#### Properties
 
-### Restream Chat API (WebSocket)
+- [Documentation](https://developers.restream.io/docs)
+- [Authentication](https://developers.restream.io/guide/getting-started)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/restream/refs/heads/main/openapi/restream-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/restream.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/restream.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-WebSocket API for unified chat across all connected streaming platforms (Twitch, YouTube, Facebook, Discord, LinkedIn, DLive). Supports real-time message relay and reply actions.
+### Restream Streaming Updates API
 
-- **Documentation:** [https://developers.restream.io/chat/getting-started](https://developers.restream.io/chat/getting-started)
+WebSocket API for real-time streaming status updates. Connect to wss://streaming.api.restream.io/ws with an OAuth access token to receive incoming and outgoing stream events, platform status updates, and viewer counts in real time.
+
+- **Human URL:** [https://developers.restream.io/private-api/streaming-updates](https://developers.restream.io/private-api/streaming-updates)
+- **Base URL:** `wss://streaming.api.restream.io`
+
+#### Tags
+
+- Real-Time
+- Streaming
+- WebSocket
+
+#### Properties
+
+- [Documentation](https://developers.restream.io/private-api/streaming-updates)
+- [Postman Collection](collections/restream.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/restream.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Restream Chat API
+
+WebSocket API for accessing and managing Restream Chat. Receive real-time chat messages from all connected streaming platforms (Twitch, YouTube, Facebook, Discord, LinkedIn, DLive) in a unified event stream. Supports reply and relay actions.
+
+- **Human URL:** [https://developers.restream.io/chat/getting-started](https://developers.restream.io/chat/getting-started)
+- **Base URL:** `wss://chat.api.restream.io`
+
+#### Tags
+
+- Chat
+- Real-Time
+- Streaming
+- WebSocket
+
+#### Properties
+
+- [Documentation](https://developers.restream.io/chat/getting-started)
+- [Postman Collection](collections/restream.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/restream.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ## Common Properties
 
-| Type | URL |
-|------|-----|
-| Website | https://restream.io |
-| Developer Portal | https://developers.restream.io |
-| Sign Up | https://app.restream.io/sign-up |
-| Login | https://app.restream.io/login |
-| Blog | https://restream.io/blog |
-| Pricing | https://restream.io/pricing |
-| Terms of Service | https://restream.io/terms |
-| Privacy Policy | https://restream.io/privacy |
-| GitHub Organization | https://github.com/restreamio |
-
-## Artifacts
-
-### OpenAPI Specifications
-
-| File | Description |
-|------|-------------|
-| [openapi/restream-openapi.yml](openapi/restream-openapi.yml) | Restream REST API v2 — channels, events, stream keys, platforms |
-
-### JSON Schemas
-
-| File | Description |
-|------|-------------|
-| [json-schema/restream-channel-schema.json](json-schema/restream-channel-schema.json) | Channel object schema |
-| [json-schema/restream-event-schema.json](json-schema/restream-event-schema.json) | Event object schema |
-| [json-schema/restream-platform-schema.json](json-schema/restream-platform-schema.json) | Platform object schema |
-
-### JSON Structures
-
-| File | Description |
-|------|-------------|
-| [json-structure/restream-channel-structure.json](json-structure/restream-channel-structure.json) | Channel data structure |
-| [json-structure/restream-event-structure.json](json-structure/restream-event-structure.json) | Event data structure |
-
-### JSON-LD Context
-
-| File | Description |
-|------|-------------|
-| [json-ld/restream-context.jsonld](json-ld/restream-context.jsonld) | JSON-LD context mapping Restream vocabulary to schema.org |
-
-### Examples
-
-| File | Description |
-|------|-------------|
-| [examples/restream-list-platforms-example.json](examples/restream-list-platforms-example.json) | List all platforms |
-| [examples/restream-get-channel-example.json](examples/restream-get-channel-example.json) | Get a channel by ID |
-| [examples/restream-get-stream-key-example.json](examples/restream-get-stream-key-example.json) | Retrieve stream key and SRT URL |
-| [examples/restream-refresh-token-example.json](examples/restream-refresh-token-example.json) | Refresh OAuth2 access token |
-
-### Spectral Rules
-
-| File | Description |
-|------|-------------|
-| [rules/restream-rules.yml](rules/restream-rules.yml) | Spectral ruleset enforcing Restream API conventions |
-
-### Capabilities
-
-| File | Description |
-|------|-------------|
-| [capabilities/multistream-management.yaml](capabilities/multistream-management.yaml) | Multistream management workflow — channels, events, stream keys |
-| [capabilities/shared/restream-api.yaml](capabilities/shared/restream-api.yaml) | Shared Restream REST API capability definition |
-
-### Vocabulary
-
-| File | Description |
-|------|-------------|
-| [vocabulary/restream-vocabulary.yml](vocabulary/restream-vocabulary.yml) | Domain vocabulary for Restream multistreaming concepts |
-
-## Authentication
-
-Restream uses **OAuth2 Authorization Code** flow. Key details:
-
-- **Authorization URL:** `https://api.restream.io/oauth/authorize`
-- **Token URL:** `https://api.restream.io/oauth/token`
-- **Access Token Expiry:** 1 hour
-- **Refresh Token Expiry:** 1 year
-- **Key Scopes:** `profile.read`, `channels.read`, `channels.write`, `stream.read`, `events.read`, `events.write`, `chat.read`
+- [LinkedIn](https://www.linkedin.com/company/restreamio)
+- [Terms of Service](https://restream.io/terms)
+- [Privacy Policy](https://restream.io/privacy)
+- [Sign Up](https://app.restream.io/sign-up)
+- [Login](https://app.restream.io/login)
+- [Blog](https://restream.io/blog)
+- [Pricing](https://restream.io/pricing)
+- [Website](https://restream.io)
+- [Developer  Portal](https://developers.restream.io)
+- [Authentication](https://developers.restream.io/guide/getting-started)
+- [GitHub Organization](https://github.com/restreamio)
+- [Integrations](https://restream.io/integrations/)
+- [L L Ms Txt](https://developers.restream.io/llms.txt)
 
 ## Maintainers
 
-- **Kin Lane** — kin@apievangelist.com
+**FN:** Kin Lane
+**Email:** kin@apievangelist.com
