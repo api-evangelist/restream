@@ -78,7 +78,7 @@ common:
     url: https://restream.io/terms
   - type: PrivacyPolicy
     url: https://restream.io/privacy
-  - type: SignUp
+  - type: Signup
     url: https://app.restream.io/sign-up
   - type: Login
     url: https://app.restream.io/login
@@ -88,7 +88,7 @@ common:
     url: https://restream.io/pricing
   - type: Website
     url: https://restream.io
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developers.restream.io
   - type: Authentication
     url: https://developers.restream.io/guide/getting-started
@@ -96,7 +96,7 @@ common:
     url: https://github.com/restreamio
   - type: Integrations
     url: https://restream.io/integrations/
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://developers.restream.io/llms.txt
 integrations:
   - name: YouTube
