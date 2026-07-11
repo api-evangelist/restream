@@ -72,6 +72,10 @@ apis:
       - type: Documentation
         url: https://developers.restream.io/chat/getting-started
 common:
+  - type: Authentication
+    url: authentication/restream-authentication.yml
+  - type: OAuthScopes
+    url: scopes/restream-scopes.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/restreamio
   - type: TermsOfService

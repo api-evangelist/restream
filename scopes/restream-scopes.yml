@@ -1,0 +1,53 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/restream-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/restream-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.restream.io/oauth/authorize
+    tokenUrl: https://api.restream.io/oauth/token
+scopes:
+- scope: channels.read
+  description: Read channel information
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/restream-openapi.yml
+- scope: channels.write
+  description: Update channel settings
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/restream-openapi.yml
+- scope: chat.read
+  description: Read chat messages
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/restream-openapi.yml
+- scope: events.read
+  description: Read event information
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/restream-openapi.yml
+- scope: events.write
+  description: Create and update events
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/restream-openapi.yml
+- scope: profile.read
+  description: Read user profile information
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/restream-openapi.yml
+- scope: stream.read
+  description: Read stream key information
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/restream-openapi.yml
