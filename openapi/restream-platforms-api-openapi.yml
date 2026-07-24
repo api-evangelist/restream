@@ -1,0 +1,76 @@
+openapi: 3.0.0
+info:
+  title: Restream Channels Platforms API
+  description: The Restream API enables developers to build live streaming integrations and manage multistreaming to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. Supports REST endpoints for user profile, channels, stream keys, events, and real-time WebSocket updates.
+  version: v2
+  contact:
+    email: developers@restream.io
+    url: https://developers.restream.io
+  termsOfService: https://restream.io/terms
+  license:
+    name: Proprietary
+servers:
+- url: https://api.restream.io/v2
+  description: Restream REST API v2
+tags:
+- name: Platforms
+  description: Public platform information
+paths:
+  /platform/all:
+    get:
+      operationId: listPlatforms
+      summary: List All Platforms
+      description: Returns all streaming platforms supported by Restream. This is a public endpoint that does not require authentication.
+      tags:
+      - Platforms
+      responses:
+        '200':
+          description: List of supported streaming platforms
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Platform'
+components:
+  schemas:
+    Platform:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique platform identifier
+          example: 1
+        name:
+          type: string
+          description: Platform name
+          example: Twitch
+        url:
+          type: string
+          description: Platform website URL
+          example: https://twitch.tv
+        image:
+          type: object
+          properties:
+            png:
+              type: string
+              description: PNG image URL
+            svg:
+              type: string
+              description: SVG image URL
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.restream.io/oauth/authorize
+          tokenUrl: https://api.restream.io/oauth/token
+          refreshUrl: https://api.restream.io/oauth/token
+          scopes:
+            profile.read: Read user profile information
+            channels.read: Read channel information
+            channels.write: Update channel settings
+            stream.read: Read stream key information
+            events.read: Read event information
+            events.write: Create and update events
+            chat.read: Read chat messages

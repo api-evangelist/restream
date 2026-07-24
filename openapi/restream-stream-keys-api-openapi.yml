@@ -1,0 +1,90 @@
+openapi: 3.0.0
+info:
+  title: Restream Channels Stream Keys API
+  description: The Restream API enables developers to build live streaming integrations and manage multistreaming to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. Supports REST endpoints for user profile, channels, stream keys, events, and real-time WebSocket updates.
+  version: v2
+  contact:
+    email: developers@restream.io
+    url: https://developers.restream.io
+  termsOfService: https://restream.io/terms
+  license:
+    name: Proprietary
+servers:
+- url: https://api.restream.io/v2
+  description: Restream REST API v2
+tags:
+- name: Stream Keys
+  description: Stream key and SRT URL management
+paths:
+  /user/streamKey:
+    get:
+      operationId: getStreamKey
+      summary: Get Stream Key
+      description: Retrieve the authenticated user's stream key and SRT URL for live streaming.
+      tags:
+      - Stream Keys
+      security:
+      - OAuth2:
+        - stream.read
+      responses:
+        '200':
+          description: User stream key and SRT URL
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamKey'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or missing access token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: HTTP status code
+        status:
+          type: integer
+        code:
+          type: integer
+          description: Application error code
+        message:
+          type: string
+          description: Human-readable error message
+        name:
+          type: string
+          description: Error type identifier
+    StreamKey:
+      type: object
+      properties:
+        streamKey:
+          type: string
+          description: RTMP stream key
+          example: re_xxx_xxx
+        srtUrl:
+          type: string
+          nullable: true
+          description: SRT streaming URL, null if user does not have SRT access
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.restream.io/oauth/authorize
+          tokenUrl: https://api.restream.io/oauth/token
+          refreshUrl: https://api.restream.io/oauth/token
+          scopes:
+            profile.read: Read user profile information
+            channels.read: Read channel information
+            channels.write: Update channel settings
+            stream.read: Read stream key information
+            events.read: Read event information
+            events.write: Create and update events
+            chat.read: Read chat messages

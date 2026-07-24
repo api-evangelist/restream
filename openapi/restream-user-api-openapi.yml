@@ -1,0 +1,158 @@
+openapi: 3.0.0
+info:
+  title: Restream Channels User API
+  description: The Restream API enables developers to build live streaming integrations and manage multistreaming to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. Supports REST endpoints for user profile, channels, stream keys, events, and real-time WebSocket updates.
+  version: v2
+  contact:
+    email: developers@restream.io
+    url: https://developers.restream.io
+  termsOfService: https://restream.io/terms
+  license:
+    name: Proprietary
+servers:
+- url: https://api.restream.io/v2
+  description: Restream REST API v2
+tags:
+- name: User
+  description: User profile and account management
+paths:
+  /user/profile:
+    get:
+      operationId: getUserProfile
+      summary: Get User Profile
+      description: Retrieve the authenticated user's profile information.
+      tags:
+      - User
+      security:
+      - OAuth2:
+        - profile.read
+      responses:
+        '200':
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /oauth/token:
+    post:
+      operationId: refreshToken
+      summary: Refresh OAuth Token
+      description: Obtain a new access token using a refresh token via the OAuth2 refresh_token grant.
+      tags:
+      - User
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - grant_type
+              - refresh_token
+              - client_id
+              - client_secret
+              properties:
+                grant_type:
+                  type: string
+                  enum:
+                  - refresh_token
+                  description: Must be set to "refresh_token"
+                refresh_token:
+                  type: string
+                  description: The refresh token from a prior code exchange
+                client_id:
+                  type: string
+                  description: Your application's client ID
+                client_secret:
+                  type: string
+                  description: Your application's client secret
+      responses:
+        '200':
+          description: New access and refresh tokens
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: New access token
+        expires_in:
+          type: integer
+          description: Access token expiry in seconds (3600 = 1 hour)
+        refresh_token:
+          type: string
+          description: New refresh token (valid for 1 year)
+        scope:
+          type: string
+          description: Granted OAuth2 scopes
+        token_type:
+          type: string
+          description: Token type (Bearer)
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: User identifier
+        email:
+          type: string
+          description: User email address
+        displayName:
+          type: string
+          description: User display name
+        username:
+          type: string
+          description: Username
+        createdAt:
+          type: string
+          format: date-time
+          description: Account creation timestamp
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: HTTP status code
+        status:
+          type: integer
+        code:
+          type: integer
+          description: Application error code
+        message:
+          type: string
+          description: Human-readable error message
+        name:
+          type: string
+          description: Error type identifier
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or missing access token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.restream.io/oauth/authorize
+          tokenUrl: https://api.restream.io/oauth/token
+          refreshUrl: https://api.restream.io/oauth/token
+          scopes:
+            profile.read: Read user profile information
+            channels.read: Read channel information
+            channels.write: Update channel settings
+            stream.read: Read stream key information
+            events.read: Read event information
+            events.write: Create and update events
+            chat.read: Read chat messages

@@ -1,0 +1,267 @@
+openapi: 3.0.0
+info:
+  title: Restream Channels API
+  description: The Restream API enables developers to build live streaming integrations and manage multistreaming to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. Supports REST endpoints for user profile, channels, stream keys, events, and real-time WebSocket updates.
+  version: v2
+  contact:
+    email: developers@restream.io
+    url: https://developers.restream.io
+  termsOfService: https://restream.io/terms
+  license:
+    name: Proprietary
+servers:
+- url: https://api.restream.io/v2
+  description: Restream REST API v2
+tags:
+- name: Channels
+  description: Channel management and configuration
+paths:
+  /user/channel/all:
+    get:
+      operationId: listChannels
+      summary: List All Channels
+      description: Retrieve all channels associated with the authenticated user's account.
+      tags:
+      - Channels
+      security:
+      - OAuth2:
+        - channels.read
+      responses:
+        '200':
+          description: List of user channels
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Channel'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /user/channel/{id}:
+    get:
+      operationId: getChannel
+      summary: Get Channel
+      description: Retrieve a specific channel by its ID.
+      tags:
+      - Channels
+      security:
+      - OAuth2:
+        - channels.read
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Channel identifier
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Channel details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Channel'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateChannel
+      summary: Update Channel
+      description: Update settings for a specific channel.
+      tags:
+      - Channels
+      security:
+      - OAuth2:
+        - channels.write
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Channel identifier
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChannelUpdate'
+      responses:
+        '200':
+          description: Updated channel
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Channel'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /user/channel/{id}/meta:
+    get:
+      operationId: getChannelMeta
+      summary: Get Channel Meta
+      description: Retrieve metadata for a specific channel.
+      tags:
+      - Channels
+      security:
+      - OAuth2:
+        - channels.read
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Channel identifier
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Channel metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChannelMeta'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    patch:
+      operationId: updateChannelMeta
+      summary: Update Channel Meta
+      description: Update metadata for a specific channel.
+      tags:
+      - Channels
+      security:
+      - OAuth2:
+        - channels.write
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Channel identifier
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChannelMetaUpdate'
+      responses:
+        '200':
+          description: Updated channel metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChannelMeta'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    ChannelMeta:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Channel identifier
+        title:
+          type: string
+          description: Stream title for this channel
+        description:
+          type: string
+          description: Stream description
+        tags:
+          type: array
+          items:
+            type: string
+          description: Stream tags
+    ChannelMetaUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Stream title
+        description:
+          type: string
+          description: Stream description
+        tags:
+          type: array
+          items:
+            type: string
+          description: Stream tags
+    ChannelUpdate:
+      type: object
+      properties:
+        active:
+          type: boolean
+          description: Enable or disable the channel
+        displayName:
+          type: string
+          description: Channel display name
+    Channel:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Channel identifier
+        streamingPlatformId:
+          type: integer
+          description: Associated platform ID
+        embedUrl:
+          type: string
+          description: Embedded player URL
+        url:
+          type: string
+          description: Channel URL
+        identifier:
+          type: string
+          description: Channel identifier string
+        displayName:
+          type: string
+          description: Channel display name
+        active:
+          type: boolean
+          description: Whether the channel is active
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: HTTP status code
+        status:
+          type: integer
+        code:
+          type: integer
+          description: Application error code
+        message:
+          type: string
+          description: Human-readable error message
+        name:
+          type: string
+          description: Error type identifier
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or missing access token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.restream.io/oauth/authorize
+          tokenUrl: https://api.restream.io/oauth/token
+          refreshUrl: https://api.restream.io/oauth/token
+          scopes:
+            profile.read: Read user profile information
+            channels.read: Read channel information
+            channels.write: Update channel settings
+            stream.read: Read stream key information
+            events.read: Read event information
+            events.write: Create and update events
+            chat.read: Read chat messages
