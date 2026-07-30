@@ -5,7 +5,20 @@ description: >-
   video to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. The platform offers REST APIs and
   WebSocket connections for managing streams, channels, events, and chat.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/restream.png
 tags:
   - Broadcast
   - Chat
@@ -18,60 +31,110 @@ created: '2025-03-15'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: restream:restream-api
-    name: Restream API
-    description: >-
-      REST API for managing Restream channels, stream keys, events, and user profiles. Uses OAuth2 authorization code
-      flow for authentication with scopes for profile, channels, streams, events, and chat. Base URL is
-      https://api.restream.io/v2.
-    humanURL: https://developers.restream.io
-    baseURL: https://api.restream.io/v2
-    tags:
-      - Channels
-      - Events
-      - Live Video
-      - OAuth2
-      - Streaming
-      - Users
-    properties:
-      - type: Documentation
-        url: https://developers.restream.io/docs
-      - type: Authentication
-        url: https://developers.restream.io/guide/getting-started
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/restream/refs/heads/main/openapi/restream-openapi.yml
-  - aid: restream:restream-streaming-updates-api
-    name: Restream Streaming Updates API
-    description: >-
-      WebSocket API for real-time streaming status updates. Connect to wss://streaming.api.restream.io/ws with an OAuth
-      access token to receive incoming and outgoing stream events, platform status updates, and viewer counts in real
-      time.
-    humanURL: https://developers.restream.io/private-api/streaming-updates
-    baseURL: wss://streaming.api.restream.io
-    tags:
-      - Real-Time
-      - Streaming
-      - WebSocket
-    properties:
-      - type: Documentation
-        url: https://developers.restream.io/private-api/streaming-updates
-  - aid: restream:restream-chat-api
-    name: Restream Chat API
-    description: >-
-      WebSocket API for accessing and managing Restream Chat. Receive real-time chat messages from all connected
-      streaming platforms (Twitch, YouTube, Facebook, Discord, LinkedIn, DLive) in a unified event stream. Supports
-      reply and relay actions.
-    humanURL: https://developers.restream.io/chat/getting-started
-    baseURL: wss://chat.api.restream.io
-    tags:
-      - Chat
-      - Real-Time
-      - Streaming
-      - WebSocket
-    properties:
-      - type: Documentation
-        url: https://developers.restream.io/chat/getting-started
+- aid: restream:restream-streaming-updates-api
+  name: Restream Streaming Updates API
+  description: >-
+    WebSocket API for real-time streaming status updates. Connect to wss://streaming.api.restream.io/ws
+    with an OAuth access token to receive incoming and outgoing stream events, platform status updates,
+    and viewer counts in real time.
+  humanURL: https://developers.restream.io/private-api/streaming-updates
+  baseURL: wss://streaming.api.restream.io
+  tags:
+  - Real-Time
+  - Streaming
+  - WebSocket
+  properties:
+  - type: Documentation
+    url: https://developers.restream.io/private-api/streaming-updates
+- aid: restream:restream-chat-api
+  name: Restream Chat API
+  description: >-
+    WebSocket API for accessing and managing Restream Chat. Receive real-time chat messages from all connected
+    streaming platforms (Twitch, YouTube, Facebook, Discord, LinkedIn, DLive) in a unified event stream.
+    Supports reply and relay actions.
+  humanURL: https://developers.restream.io/chat/getting-started
+  baseURL: wss://chat.api.restream.io
+  tags:
+  - Chat
+  - Real-Time
+  - Streaming
+  - WebSocket
+  properties:
+  - type: Documentation
+    url: https://developers.restream.io/chat/getting-started
+- aid: restream:restream-channels-api
+  name: Restream Channels API
+  description: Channel management and configuration
+  humanURL: https://developers.restream.io
+  baseURL: https://api.restream.io/v2
+  tags:
+  - Channels
+  properties:
+  - type: OpenAPI
+    url: openapi/restream-channels-api-openapi.yml
+  - type: Documentation
+    url: https://developers.restream.io/docs
+  - type: Authentication
+    url: https://developers.restream.io/guide/getting-started
+- aid: restream:restream-events-api
+  name: Restream Events API
+  description: Live event management and scheduling
+  humanURL: https://developers.restream.io
+  baseURL: https://api.restream.io/v2
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/restream-events-api-openapi.yml
+  - type: Documentation
+    url: https://developers.restream.io/docs
+  - type: Authentication
+    url: https://developers.restream.io/guide/getting-started
+- aid: restream:restream-platforms-api
+  name: Restream Platforms API
+  description: Public platform information
+  humanURL: https://developers.restream.io
+  baseURL: https://api.restream.io/v2
+  tags:
+  - Platforms
+  properties:
+  - type: OpenAPI
+    url: openapi/restream-platforms-api-openapi.yml
+  - type: Documentation
+    url: https://developers.restream.io/docs
+  - type: Authentication
+    url: https://developers.restream.io/guide/getting-started
+- aid: restream:restream-stream-keys-api
+  name: Restream Stream Keys API
+  description: Stream key and SRT URL management
+  humanURL: https://developers.restream.io
+  baseURL: https://api.restream.io/v2
+  tags:
+  - Stream Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/restream-stream-keys-api-openapi.yml
+  - type: Documentation
+    url: https://developers.restream.io/docs
+  - type: Authentication
+    url: https://developers.restream.io/guide/getting-started
+- aid: restream:restream-user-api
+  name: Restream User API
+  description: User profile and account management
+  humanURL: https://developers.restream.io
+  baseURL: https://api.restream.io/v2
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/restream-user-api-openapi.yml
+  - type: Documentation
+    url: https://developers.restream.io/docs
+  - type: Authentication
+    url: https://developers.restream.io/guide/getting-started
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/restream/overview
   - type: AgenticAccess
     url: agentic-access/restream-agentic-access.yml
   - type: DomainSecurity
