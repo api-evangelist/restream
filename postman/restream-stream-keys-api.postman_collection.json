@@ -1,0 +1,186 @@
+{
+  "info": {
+    "_postman_id": "1b0078a1-c7ba-4f17-85b5-6d11c61fdbbe",
+    "name": "Restream Channels Stream Keys API",
+    "description": "The Restream API enables developers to build live streaming integrations and manage multistreaming to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. Supports REST endpoints for user profile, channels, stream keys, events, and real-time WebSocket updates.\n\nContact Support:\n Email: developers@restream.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:47:22.000Z",
+    "updatedAt": "2026-07-28T02:47:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1b0078a1-c7ba-4f17-85b5-6d11c61fdbbe"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "streamKey",
+          "item": [
+            {
+              "name": "Get Stream Key",
+              "id": "17701aad-706f-4eab-8701-f7da401394f0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "profile.read channels.read channels.write stream.read events.read events.write chat.read",
+                      "type": "string"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "https://api.restream.io/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.restream.io/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://api.restream.io/oauth/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user/streamKey",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "streamKey"
+                  ]
+                },
+                "description": "Retrieve the authenticated user's stream key and SRT URL for live streaming."
+              },
+              "response": [
+                {
+                  "id": "4fcc986e-31e4-46d9-b5a8-9d095acdffeb",
+                  "name": "User stream key and SRT URL",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/streamKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "streamKey"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"streamKey\": \"<string>\",\n  \"srtUrl\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:47:23.000Z",
+                  "updatedAt": "2026-07-28T02:47:23.000Z",
+                  "uid": "35240-4fcc986e-31e4-46d9-b5a8-9d095acdffeb"
+                },
+                {
+                  "id": "142d490f-81d3-4c25-bc95-8f68a6b95dbb",
+                  "name": "Unauthorized - invalid or missing access token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/streamKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "streamKey"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:47:23.000Z",
+                  "updatedAt": "2026-07-28T02:47:23.000Z",
+                  "uid": "35240-142d490f-81d3-4c25-bc95-8f68a6b95dbb"
+                }
+              ],
+              "createdAt": "2026-07-28T02:47:23.000Z",
+              "updatedAt": "2026-07-28T02:47:23.000Z",
+              "uid": "35240-17701aad-706f-4eab-8701-f7da401394f0"
+            }
+          ],
+          "id": "02a11cda-4f4f-4966-8f79-7ed9c0417c95",
+          "createdAt": "2026-07-28T02:47:23.000Z",
+          "updatedAt": "2026-07-28T02:47:23.000Z",
+          "uid": "35240-02a11cda-4f4f-4966-8f79-7ed9c0417c95"
+        }
+      ],
+      "id": "0dc1b261-e0a7-4316-ab2b-cca58c84496b",
+      "createdAt": "2026-07-28T02:47:23.000Z",
+      "updatedAt": "2026-07-28T02:47:23.000Z",
+      "uid": "35240-0dc1b261-e0a7-4316-ab2b-cca58c84496b"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.restream.io/v2"
+    }
+  ]
+}

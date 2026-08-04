@@ -1,0 +1,399 @@
+{
+  "info": {
+    "_postman_id": "53a67eb9-f79c-4d29-a6fa-614a71d9546d",
+    "name": "Restream Channels User API",
+    "description": "The Restream API enables developers to build live streaming integrations and manage multistreaming to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. Supports REST endpoints for user profile, channels, stream keys, events, and real-time WebSocket updates.\n\nContact Support:\n Email: developers@restream.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:47:24.000Z",
+    "updatedAt": "2026-07-28T02:47:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-53a67eb9-f79c-4d29-a6fa-614a71d9546d"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "profile",
+          "item": [
+            {
+              "name": "Get User Profile",
+              "id": "8d48c7a0-129d-4336-8ac2-759a95fd1e55",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "profile.read channels.read channels.write stream.read events.read events.write chat.read",
+                      "type": "string"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "https://api.restream.io/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.restream.io/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://api.restream.io/oauth/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user/profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "profile"
+                  ]
+                },
+                "description": "Retrieve the authenticated user's profile information."
+              },
+              "response": [
+                {
+                  "id": "d9c738e0-cf18-4313-8009-ba045fe6ab48",
+                  "name": "User profile",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/profile",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "profile"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"email\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"username\": \"<string>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:47:24.000Z",
+                  "updatedAt": "2026-07-28T02:47:24.000Z",
+                  "uid": "35240-d9c738e0-cf18-4313-8009-ba045fe6ab48"
+                },
+                {
+                  "id": "dc070e05-c421-40db-b905-3c6f4448c55a",
+                  "name": "Unauthorized - invalid or missing access token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/profile",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "profile"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:47:24.000Z",
+                  "updatedAt": "2026-07-28T02:47:24.000Z",
+                  "uid": "35240-dc070e05-c421-40db-b905-3c6f4448c55a"
+                }
+              ],
+              "createdAt": "2026-07-28T02:47:24.000Z",
+              "updatedAt": "2026-07-28T02:47:24.000Z",
+              "uid": "35240-8d48c7a0-129d-4336-8ac2-759a95fd1e55"
+            }
+          ],
+          "id": "8670f4dd-3ccd-48c2-8b77-e410cc0e77ed",
+          "createdAt": "2026-07-28T02:47:24.000Z",
+          "updatedAt": "2026-07-28T02:47:24.000Z",
+          "uid": "35240-8670f4dd-3ccd-48c2-8b77-e410cc0e77ed"
+        }
+      ],
+      "id": "d3ab1728-ca2d-4b1b-8b0e-67ac5d2cf000",
+      "createdAt": "2026-07-28T02:47:24.000Z",
+      "updatedAt": "2026-07-28T02:47:24.000Z",
+      "uid": "35240-d3ab1728-ca2d-4b1b-8b0e-67ac5d2cf000"
+    },
+    {
+      "name": "oauth",
+      "item": [
+        {
+          "name": "token",
+          "item": [
+            {
+              "name": "Refresh OAuth Token",
+              "id": "a89dff1c-741d-45a1-a986-15c0f8154431",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Must be set to \"refresh_token\"",
+                      "key": "grant_type",
+                      "value": "refresh_token"
+                    },
+                    {
+                      "description": "(Required) The refresh token from a prior code exchange",
+                      "key": "refresh_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Your application's client ID",
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Your application's client secret",
+                      "key": "client_secret",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/oauth/token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "oauth",
+                    "token"
+                  ]
+                },
+                "description": "Obtain a new access token using a refresh token via the OAuth2 refresh_token grant."
+              },
+              "response": [
+                {
+                  "id": "e260d260-7578-49d5-9acb-f99cd6c2fc97",
+                  "name": "New access and refresh tokens",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Must be set to \"refresh_token\"",
+                          "key": "grant_type",
+                          "value": "refresh_token"
+                        },
+                        {
+                          "description": "(Required) The refresh token from a prior code exchange",
+                          "key": "refresh_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Your application's client ID",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Your application's client secret",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"access_token\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"refresh_token\": \"<string>\",\n  \"scope\": \"<string>\",\n  \"token_type\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:47:24.000Z",
+                  "updatedAt": "2026-07-28T02:47:24.000Z",
+                  "uid": "35240-e260d260-7578-49d5-9acb-f99cd6c2fc97"
+                },
+                {
+                  "id": "0a37a535-8098-4400-9f5c-675c0df817a4",
+                  "name": "Unauthorized - invalid or missing access token",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Must be set to \"refresh_token\"",
+                          "key": "grant_type",
+                          "value": "refresh_token"
+                        },
+                        {
+                          "description": "(Required) The refresh token from a prior code exchange",
+                          "key": "refresh_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Your application's client ID",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Your application's client secret",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:47:24.000Z",
+                  "updatedAt": "2026-07-28T02:47:24.000Z",
+                  "uid": "35240-0a37a535-8098-4400-9f5c-675c0df817a4"
+                }
+              ],
+              "createdAt": "2026-07-28T02:47:24.000Z",
+              "updatedAt": "2026-07-28T02:47:24.000Z",
+              "uid": "35240-a89dff1c-741d-45a1-a986-15c0f8154431"
+            }
+          ],
+          "id": "3a966d7e-5041-4529-8db7-355715bae697",
+          "createdAt": "2026-07-28T02:47:24.000Z",
+          "updatedAt": "2026-07-28T02:47:24.000Z",
+          "uid": "35240-3a966d7e-5041-4529-8db7-355715bae697"
+        }
+      ],
+      "id": "380a68b6-a394-484b-bdd0-255b3dad8013",
+      "createdAt": "2026-07-28T02:47:24.000Z",
+      "updatedAt": "2026-07-28T02:47:24.000Z",
+      "uid": "35240-380a68b6-a394-484b-bdd0-255b3dad8013"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.restream.io/v2"
+    }
+  ]
+}

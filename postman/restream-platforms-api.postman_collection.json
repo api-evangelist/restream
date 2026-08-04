@@ -1,0 +1,108 @@
+{
+  "info": {
+    "_postman_id": "0cc63269-555b-4f27-92b3-5423c84d21a7",
+    "name": "Restream Channels Platforms API",
+    "description": "The Restream API enables developers to build live streaming integrations and manage multistreaming to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. Supports REST endpoints for user profile, channels, stream keys, events, and real-time WebSocket updates.\n\nContact Support:\n Email: developers@restream.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:47:21.000Z",
+    "updatedAt": "2026-07-28T02:47:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0cc63269-555b-4f27-92b3-5423c84d21a7"
+  },
+  "item": [
+    {
+      "name": "platform",
+      "item": [
+        {
+          "name": "all",
+          "item": [
+            {
+              "name": "List All Platforms",
+              "id": "7d572242-ac19-40d4-98fa-03ad115d6276",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/platform/all",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "platform",
+                    "all"
+                  ]
+                },
+                "description": "Returns all streaming platforms supported by Restream. This is a public endpoint that does not require authentication."
+              },
+              "response": [
+                {
+                  "id": "6a404997-53b4-4357-b1b7-90afebc434f7",
+                  "name": "List of supported streaming platforms",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/platform/all",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "platform",
+                        "all"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"url\": \"<string>\",\n    \"image\": {\n      \"png\": \"<string>\",\n      \"svg\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"url\": \"<string>\",\n    \"image\": {\n      \"png\": \"<string>\",\n      \"svg\": \"<string>\"\n    }\n  }\n]",
+                  "createdAt": "2026-07-28T02:47:22.000Z",
+                  "updatedAt": "2026-07-28T02:47:22.000Z",
+                  "uid": "35240-6a404997-53b4-4357-b1b7-90afebc434f7"
+                }
+              ],
+              "createdAt": "2026-07-28T02:47:22.000Z",
+              "updatedAt": "2026-07-28T02:47:22.000Z",
+              "uid": "35240-7d572242-ac19-40d4-98fa-03ad115d6276"
+            }
+          ],
+          "id": "7f3647cc-f715-464b-bef0-d5df6ffbe6f1",
+          "createdAt": "2026-07-28T02:47:22.000Z",
+          "updatedAt": "2026-07-28T02:47:22.000Z",
+          "uid": "35240-7f3647cc-f715-464b-bef0-d5df6ffbe6f1"
+        }
+      ],
+      "id": "4b09478b-36e6-4777-90f2-72852863bf9f",
+      "createdAt": "2026-07-28T02:47:22.000Z",
+      "updatedAt": "2026-07-28T02:47:22.000Z",
+      "uid": "35240-4b09478b-36e6-4777-90f2-72852863bf9f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.restream.io/v2"
+    }
+  ]
+}

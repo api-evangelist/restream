@@ -1,0 +1,962 @@
+{
+  "info": {
+    "_postman_id": "e2fe61fa-8f21-4bb0-9cea-75665f03fdb7",
+    "name": "Restream Channels Events API",
+    "description": "The Restream API enables developers to build live streaming integrations and manage multistreaming to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. Supports REST endpoints for user profile, channels, stream keys, events, and real-time WebSocket updates.\n\nContact Support:\n Email: developers@restream.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:47:21.000Z",
+    "updatedAt": "2026-07-28T02:47:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e2fe61fa-8f21-4bb0-9cea-75665f03fdb7"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "event",
+          "item": [
+            {
+              "name": "upcoming",
+              "item": [
+                {
+                  "name": "List Upcoming Events",
+                  "id": "c4bf8beb-aefa-4917-ab65-511d73446abc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "profile.read channels.read channels.write stream.read events.read events.write chat.read",
+                          "type": "string"
+                        },
+                        {
+                          "key": "redirect_uri",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://api.restream.io/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/event/upcoming",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "event",
+                        "upcoming"
+                      ]
+                    },
+                    "description": "Retrieve all upcoming live events for the authenticated user."
+                  },
+                  "response": [
+                    {
+                      "id": "1e3ffcbe-a731-490c-8eb4-3a818e9f53e3",
+                      "name": "List of upcoming events",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/event/upcoming",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "event",
+                            "upcoming"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"in-progress\",\n    \"startedAt\": \"<dateTime>\",\n    \"endedAt\": \"<dateTime>\",\n    \"channels\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  },\n  {\n    \"id\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"completed\",\n    \"startedAt\": \"<dateTime>\",\n    \"endedAt\": \"<dateTime>\",\n    \"channels\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  }\n]",
+                      "createdAt": "2026-07-28T02:47:21.000Z",
+                      "updatedAt": "2026-07-28T02:47:21.000Z",
+                      "uid": "35240-1e3ffcbe-a731-490c-8eb4-3a818e9f53e3"
+                    },
+                    {
+                      "id": "359eab5d-a473-4f1f-bd00-03c4377b22d3",
+                      "name": "Unauthorized - invalid or missing access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/event/upcoming",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "event",
+                            "upcoming"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:47:21.000Z",
+                      "updatedAt": "2026-07-28T02:47:21.000Z",
+                      "uid": "35240-359eab5d-a473-4f1f-bd00-03c4377b22d3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:47:21.000Z",
+                  "updatedAt": "2026-07-28T02:47:21.000Z",
+                  "uid": "35240-c4bf8beb-aefa-4917-ab65-511d73446abc"
+                }
+              ],
+              "id": "be040deb-2209-4ba6-ad46-27c0e7202689",
+              "createdAt": "2026-07-28T02:47:21.000Z",
+              "updatedAt": "2026-07-28T02:47:21.000Z",
+              "uid": "35240-be040deb-2209-4ba6-ad46-27c0e7202689"
+            },
+            {
+              "name": "in-progress",
+              "item": [
+                {
+                  "name": "List In-Progress Events",
+                  "id": "7f3a15e2-20f8-4d54-a301-99e4730fa240",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "profile.read channels.read channels.write stream.read events.read events.write chat.read",
+                          "type": "string"
+                        },
+                        {
+                          "key": "redirect_uri",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://api.restream.io/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/event/in-progress",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "event",
+                        "in-progress"
+                      ]
+                    },
+                    "description": "Retrieve all currently active live events for the authenticated user."
+                  },
+                  "response": [
+                    {
+                      "id": "cc7744b1-9c36-4fa8-838b-b1363db96d8d",
+                      "name": "List of in-progress events",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/event/in-progress",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "event",
+                            "in-progress"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"in-progress\",\n    \"startedAt\": \"<dateTime>\",\n    \"endedAt\": \"<dateTime>\",\n    \"channels\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  },\n  {\n    \"id\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"completed\",\n    \"startedAt\": \"<dateTime>\",\n    \"endedAt\": \"<dateTime>\",\n    \"channels\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  }\n]",
+                      "createdAt": "2026-07-28T02:47:21.000Z",
+                      "updatedAt": "2026-07-28T02:47:21.000Z",
+                      "uid": "35240-cc7744b1-9c36-4fa8-838b-b1363db96d8d"
+                    },
+                    {
+                      "id": "4f5f512b-c38f-4a0e-8194-e468150d1713",
+                      "name": "Unauthorized - invalid or missing access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/event/in-progress",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "event",
+                            "in-progress"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:47:21.000Z",
+                      "updatedAt": "2026-07-28T02:47:21.000Z",
+                      "uid": "35240-4f5f512b-c38f-4a0e-8194-e468150d1713"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:47:21.000Z",
+                  "updatedAt": "2026-07-28T02:47:21.000Z",
+                  "uid": "35240-7f3a15e2-20f8-4d54-a301-99e4730fa240"
+                }
+              ],
+              "id": "7c625432-1267-4eee-ad43-f2631e4488ba",
+              "createdAt": "2026-07-28T02:47:21.000Z",
+              "updatedAt": "2026-07-28T02:47:21.000Z",
+              "uid": "35240-7c625432-1267-4eee-ad43-f2631e4488ba"
+            },
+            {
+              "name": "history",
+              "item": [
+                {
+                  "name": "List Event History",
+                  "id": "02696035-953d-4cfd-b3fe-045071f679c6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "profile.read channels.read channels.write stream.read events.read events.write chat.read",
+                          "type": "string"
+                        },
+                        {
+                          "key": "redirect_uri",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://api.restream.io/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/event/history?limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "event",
+                        "history"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of events to return",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of events to skip for pagination",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve historical live events for the authenticated user."
+                  },
+                  "response": [
+                    {
+                      "id": "8fbccc4d-87bd-4854-a9a6-047b057d02e5",
+                      "name": "List of past events",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/event/history?limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "event",
+                            "history"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of events to return",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of events to skip for pagination",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"in-progress\",\n    \"startedAt\": \"<dateTime>\",\n    \"endedAt\": \"<dateTime>\",\n    \"channels\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  },\n  {\n    \"id\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"completed\",\n    \"startedAt\": \"<dateTime>\",\n    \"endedAt\": \"<dateTime>\",\n    \"channels\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  }\n]",
+                      "createdAt": "2026-07-28T02:47:21.000Z",
+                      "updatedAt": "2026-07-28T02:47:21.000Z",
+                      "uid": "35240-8fbccc4d-87bd-4854-a9a6-047b057d02e5"
+                    },
+                    {
+                      "id": "9351d866-4b46-4c81-9af9-37bd3e7014d7",
+                      "name": "Unauthorized - invalid or missing access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/event/history?limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "event",
+                            "history"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of events to return",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of events to skip for pagination",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:47:21.000Z",
+                      "updatedAt": "2026-07-28T02:47:21.000Z",
+                      "uid": "35240-9351d866-4b46-4c81-9af9-37bd3e7014d7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:47:21.000Z",
+                  "updatedAt": "2026-07-28T02:47:21.000Z",
+                  "uid": "35240-02696035-953d-4cfd-b3fe-045071f679c6"
+                }
+              ],
+              "id": "7e60e4d5-c21f-40ff-8884-d975ddd3a488",
+              "createdAt": "2026-07-28T02:47:21.000Z",
+              "updatedAt": "2026-07-28T02:47:21.000Z",
+              "uid": "35240-7e60e4d5-c21f-40ff-8884-d975ddd3a488"
+            },
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "streamKey",
+                  "item": [
+                    {
+                      "name": "Get Event Stream Key",
+                      "id": "dc61982c-bcd3-4337-a85b-8256294265f9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "profile.read channels.read channels.write stream.read events.read events.write chat.read",
+                              "type": "string"
+                            },
+                            {
+                              "key": "redirect_uri",
+                              "value": "https://api.restream.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.restream.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://api.restream.io/oauth/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/event/:id/streamKey",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "event",
+                            ":id",
+                            "streamKey"
+                          ],
+                          "variable": [
+                            {
+                              "id": "57f00f91-7aa0-4731-bcbd-0b1e75c68549",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Event identifier"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve the stream key for a specific event."
+                      },
+                      "response": [
+                        {
+                          "id": "59523acb-ecd7-4397-9083-a015e52f09bd",
+                          "name": "Event stream key",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user/event/:id/streamKey",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user",
+                                "event",
+                                ":id",
+                                "streamKey"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"streamKey\": \"<string>\",\n  \"srtUrl\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:47:21.000Z",
+                          "updatedAt": "2026-07-28T02:47:21.000Z",
+                          "uid": "35240-59523acb-ecd7-4397-9083-a015e52f09bd"
+                        },
+                        {
+                          "id": "4f0c7ee6-18ac-46c3-884b-f7f0d23df6aa",
+                          "name": "Unauthorized - invalid or missing access token",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user/event/:id/streamKey",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user",
+                                "event",
+                                ":id",
+                                "streamKey"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:47:21.000Z",
+                          "updatedAt": "2026-07-28T02:47:21.000Z",
+                          "uid": "35240-4f0c7ee6-18ac-46c3-884b-f7f0d23df6aa"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:47:21.000Z",
+                      "updatedAt": "2026-07-28T02:47:21.000Z",
+                      "uid": "35240-dc61982c-bcd3-4337-a85b-8256294265f9"
+                    }
+                  ],
+                  "id": "913bd6b4-65ab-4dba-bd27-701867b8fc65",
+                  "createdAt": "2026-07-28T02:47:21.000Z",
+                  "updatedAt": "2026-07-28T02:47:21.000Z",
+                  "uid": "35240-913bd6b4-65ab-4dba-bd27-701867b8fc65"
+                },
+                {
+                  "name": "Get Event",
+                  "id": "3c103312-dd4b-45ad-bd73-8a57ba213bc2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "profile.read channels.read channels.write stream.read events.read events.write chat.read",
+                          "type": "string"
+                        },
+                        {
+                          "key": "redirect_uri",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://api.restream.io/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/event/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "event",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "731f7680-3e23-4600-81c7-3129012750a5",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Event identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details for a specific event by its ID."
+                  },
+                  "response": [
+                    {
+                      "id": "c9ecc73c-7095-4bbe-ae2e-89117404f6f3",
+                      "name": "Event details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/event/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "event",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"upcoming\",\n  \"startedAt\": \"<dateTime>\",\n  \"endedAt\": \"<dateTime>\",\n  \"channels\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T02:47:21.000Z",
+                      "updatedAt": "2026-07-28T02:47:21.000Z",
+                      "uid": "35240-c9ecc73c-7095-4bbe-ae2e-89117404f6f3"
+                    },
+                    {
+                      "id": "a77c09d5-718e-414c-afb0-129f1a2d8494",
+                      "name": "Unauthorized - invalid or missing access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/event/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "event",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:47:21.000Z",
+                      "updatedAt": "2026-07-28T02:47:21.000Z",
+                      "uid": "35240-a77c09d5-718e-414c-afb0-129f1a2d8494"
+                    },
+                    {
+                      "id": "35dab00e-9137-4a33-9a81-8eb6bc781398",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/event/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "event",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:47:21.000Z",
+                      "updatedAt": "2026-07-28T02:47:21.000Z",
+                      "uid": "35240-35dab00e-9137-4a33-9a81-8eb6bc781398"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:47:21.000Z",
+                  "updatedAt": "2026-07-28T02:47:21.000Z",
+                  "uid": "35240-3c103312-dd4b-45ad-bd73-8a57ba213bc2"
+                }
+              ],
+              "id": "32a8c59e-eee4-456d-a1fa-6087c216605e",
+              "createdAt": "2026-07-28T02:47:21.000Z",
+              "updatedAt": "2026-07-28T02:47:21.000Z",
+              "uid": "35240-32a8c59e-eee4-456d-a1fa-6087c216605e"
+            }
+          ],
+          "id": "a8be8276-28e7-4271-ba2b-274f26b3bc63",
+          "createdAt": "2026-07-28T02:47:21.000Z",
+          "updatedAt": "2026-07-28T02:47:21.000Z",
+          "uid": "35240-a8be8276-28e7-4271-ba2b-274f26b3bc63"
+        }
+      ],
+      "id": "820a226c-dd20-4bc8-abab-bbd575e2ee51",
+      "createdAt": "2026-07-28T02:47:21.000Z",
+      "updatedAt": "2026-07-28T02:47:21.000Z",
+      "uid": "35240-820a226c-dd20-4bc8-abab-bbd575e2ee51"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.restream.io/v2"
+    }
+  ]
+}

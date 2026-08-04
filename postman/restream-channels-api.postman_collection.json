@@ -1,0 +1,1031 @@
+{
+  "info": {
+    "_postman_id": "72b998b8-07cb-49e8-9415-fed07e6d87b2",
+    "name": "Restream Channels API",
+    "description": "The Restream API enables developers to build live streaming integrations and manage multistreaming to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. Supports REST endpoints for user profile, channels, stream keys, events, and real-time WebSocket updates.\n\nContact Support:\n Email: developers@restream.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:47:11.000Z",
+    "updatedAt": "2026-07-28T02:47:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-72b998b8-07cb-49e8-9415-fed07e6d87b2"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "channel",
+          "item": [
+            {
+              "name": "all",
+              "item": [
+                {
+                  "name": "List All Channels",
+                  "id": "56086ca5-3f62-455a-a3c8-8a77add7632a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "profile.read channels.read channels.write stream.read events.read events.write chat.read",
+                          "type": "string"
+                        },
+                        {
+                          "key": "redirect_uri",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://api.restream.io/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/channel/all",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "channel",
+                        "all"
+                      ]
+                    },
+                    "description": "Retrieve all channels associated with the authenticated user's account."
+                  },
+                  "response": [
+                    {
+                      "id": "bedd971b-0411-4ee6-bfd3-69b7aa199c73",
+                      "name": "List of user channels",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/channel/all",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "channel",
+                            "all"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"streamingPlatformId\": \"<integer>\",\n    \"embedUrl\": \"<string>\",\n    \"url\": \"<string>\",\n    \"identifier\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"active\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"streamingPlatformId\": \"<integer>\",\n    \"embedUrl\": \"<string>\",\n    \"url\": \"<string>\",\n    \"identifier\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"active\": \"<boolean>\"\n  }\n]",
+                      "createdAt": "2026-07-28T02:47:11.000Z",
+                      "updatedAt": "2026-07-28T02:47:11.000Z",
+                      "uid": "35240-bedd971b-0411-4ee6-bfd3-69b7aa199c73"
+                    },
+                    {
+                      "id": "4e9bedcb-105f-43ca-8bbd-b0faad5cb082",
+                      "name": "Unauthorized - invalid or missing access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/channel/all",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "channel",
+                            "all"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:47:11.000Z",
+                      "updatedAt": "2026-07-28T02:47:11.000Z",
+                      "uid": "35240-4e9bedcb-105f-43ca-8bbd-b0faad5cb082"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:47:11.000Z",
+                  "updatedAt": "2026-07-28T02:47:11.000Z",
+                  "uid": "35240-56086ca5-3f62-455a-a3c8-8a77add7632a"
+                }
+              ],
+              "id": "1fe3cbbf-d5a9-4b74-844c-65f22649d5c7",
+              "createdAt": "2026-07-28T02:47:11.000Z",
+              "updatedAt": "2026-07-28T02:47:11.000Z",
+              "uid": "35240-1fe3cbbf-d5a9-4b74-844c-65f22649d5c7"
+            },
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "meta",
+                  "item": [
+                    {
+                      "name": "Get Channel Meta",
+                      "id": "b9a60b30-141e-47b8-8b27-27299d52ad92",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "profile.read channels.read channels.write stream.read events.read events.write chat.read",
+                              "type": "string"
+                            },
+                            {
+                              "key": "redirect_uri",
+                              "value": "https://api.restream.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.restream.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://api.restream.io/oauth/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/channel/:id/meta",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "channel",
+                            ":id",
+                            "meta"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d6b6b9f0-0889-47bc-a0b9-5a6794c3cccb",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Channel identifier"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve metadata for a specific channel."
+                      },
+                      "response": [
+                        {
+                          "id": "b5510dbc-6b28-44ca-a1c5-49e7873b046e",
+                          "name": "Channel metadata",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user/channel/:id/meta",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user",
+                                "channel",
+                                ":id",
+                                "meta"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-07-28T02:47:11.000Z",
+                          "updatedAt": "2026-07-28T02:47:11.000Z",
+                          "uid": "35240-b5510dbc-6b28-44ca-a1c5-49e7873b046e"
+                        },
+                        {
+                          "id": "b18a79d6-a0d9-4054-bf6c-ffc032e2e923",
+                          "name": "Unauthorized - invalid or missing access token",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user/channel/:id/meta",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user",
+                                "channel",
+                                ":id",
+                                "meta"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:47:11.000Z",
+                          "updatedAt": "2026-07-28T02:47:11.000Z",
+                          "uid": "35240-b18a79d6-a0d9-4054-bf6c-ffc032e2e923"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:47:11.000Z",
+                      "updatedAt": "2026-07-28T02:47:11.000Z",
+                      "uid": "35240-b9a60b30-141e-47b8-8b27-27299d52ad92"
+                    },
+                    {
+                      "name": "Update Channel Meta",
+                      "id": "246b1706-85fa-490c-87f1-c59057ecbe47",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "profile.read channels.read channels.write stream.read events.read events.write chat.read",
+                              "type": "string"
+                            },
+                            {
+                              "key": "redirect_uri",
+                              "value": "https://api.restream.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.restream.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://api.restream.io/oauth/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/channel/:id/meta",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "channel",
+                            ":id",
+                            "meta"
+                          ],
+                          "variable": [
+                            {
+                              "id": "42054fd9-b9c7-45af-b8af-909ca0e8b796",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Channel identifier"
+                            }
+                          ]
+                        },
+                        "description": "Update metadata for a specific channel."
+                      },
+                      "response": [
+                        {
+                          "id": "bde9e3ed-e51b-4b01-b3df-55465bb0fb52",
+                          "name": "Updated channel metadata",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/user/channel/:id/meta",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user",
+                                "channel",
+                                ":id",
+                                "meta"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-07-28T02:47:11.000Z",
+                          "updatedAt": "2026-07-28T02:47:11.000Z",
+                          "uid": "35240-bde9e3ed-e51b-4b01-b3df-55465bb0fb52"
+                        },
+                        {
+                          "id": "87e6ae42-5d59-4833-abdc-fc375463965c",
+                          "name": "Unauthorized - invalid or missing access token",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/user/channel/:id/meta",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user",
+                                "channel",
+                                ":id",
+                                "meta"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:47:11.000Z",
+                          "updatedAt": "2026-07-28T02:47:11.000Z",
+                          "uid": "35240-87e6ae42-5d59-4833-abdc-fc375463965c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:47:11.000Z",
+                      "updatedAt": "2026-07-28T02:47:11.000Z",
+                      "uid": "35240-246b1706-85fa-490c-87f1-c59057ecbe47"
+                    }
+                  ],
+                  "id": "8db0b7d4-c2de-4065-8b99-9f93e0007a39",
+                  "createdAt": "2026-07-28T02:47:11.000Z",
+                  "updatedAt": "2026-07-28T02:47:11.000Z",
+                  "uid": "35240-8db0b7d4-c2de-4065-8b99-9f93e0007a39"
+                },
+                {
+                  "name": "Get Channel",
+                  "id": "e6b11df2-fb8c-493b-9c53-6a27da9f2e92",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "profile.read channels.read channels.write stream.read events.read events.write chat.read",
+                          "type": "string"
+                        },
+                        {
+                          "key": "redirect_uri",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://api.restream.io/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/channel/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "channel",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8b9da454-d3ae-41af-877c-5c4698a4a0eb",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) Channel identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a specific channel by its ID."
+                  },
+                  "response": [
+                    {
+                      "id": "e35ca212-4b31-439c-9f1f-bd9280a69b40",
+                      "name": "Channel details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/channel/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "channel",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"streamingPlatformId\": \"<integer>\",\n  \"embedUrl\": \"<string>\",\n  \"url\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T02:47:11.000Z",
+                      "updatedAt": "2026-07-28T02:47:11.000Z",
+                      "uid": "35240-e35ca212-4b31-439c-9f1f-bd9280a69b40"
+                    },
+                    {
+                      "id": "a391422b-c0e5-46b1-be3d-9a7650c49b91",
+                      "name": "Unauthorized - invalid or missing access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/channel/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "channel",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:47:11.000Z",
+                      "updatedAt": "2026-07-28T02:47:11.000Z",
+                      "uid": "35240-a391422b-c0e5-46b1-be3d-9a7650c49b91"
+                    },
+                    {
+                      "id": "54b8846c-2696-4510-8d23-a50bf891cdf9",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/channel/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "channel",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:47:11.000Z",
+                      "updatedAt": "2026-07-28T02:47:11.000Z",
+                      "uid": "35240-54b8846c-2696-4510-8d23-a50bf891cdf9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:47:11.000Z",
+                  "updatedAt": "2026-07-28T02:47:11.000Z",
+                  "uid": "35240-e6b11df2-fb8c-493b-9c53-6a27da9f2e92"
+                },
+                {
+                  "name": "Update Channel",
+                  "id": "a141ac87-46d8-4f10-a098-5f871c913bc3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "profile.read channels.read channels.write stream.read events.read events.write chat.read",
+                          "type": "string"
+                        },
+                        {
+                          "key": "redirect_uri",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.restream.io/oauth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://api.restream.io/oauth/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/channel/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "channel",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7977bd5f-d207-435e-a99d-e9b889dc3ac4",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) Channel identifier"
+                        }
+                      ]
+                    },
+                    "description": "Update settings for a specific channel."
+                  },
+                  "response": [
+                    {
+                      "id": "7d393143-cfaa-46ee-91e7-d3f82a614cd4",
+                      "name": "Updated channel",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/channel/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "channel",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"streamingPlatformId\": \"<integer>\",\n  \"embedUrl\": \"<string>\",\n  \"url\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T02:47:11.000Z",
+                      "updatedAt": "2026-07-28T02:47:11.000Z",
+                      "uid": "35240-7d393143-cfaa-46ee-91e7-d3f82a614cd4"
+                    },
+                    {
+                      "id": "eb6650d4-a5cb-4bae-a0d1-8c2a690e2f9a",
+                      "name": "Unauthorized - invalid or missing access token",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"active\": \"<boolean>\",\n  \"displayName\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/channel/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "channel",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:47:11.000Z",
+                      "updatedAt": "2026-07-28T02:47:11.000Z",
+                      "uid": "35240-eb6650d4-a5cb-4bae-a0d1-8c2a690e2f9a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:47:11.000Z",
+                  "updatedAt": "2026-07-28T02:47:11.000Z",
+                  "uid": "35240-a141ac87-46d8-4f10-a098-5f871c913bc3"
+                }
+              ],
+              "id": "03f33129-5cd8-451d-9c24-993f3e150a2e",
+              "createdAt": "2026-07-28T02:47:11.000Z",
+              "updatedAt": "2026-07-28T02:47:11.000Z",
+              "uid": "35240-03f33129-5cd8-451d-9c24-993f3e150a2e"
+            }
+          ],
+          "id": "5bd170eb-64bd-4d8e-8967-6737c92ea26c",
+          "createdAt": "2026-07-28T02:47:11.000Z",
+          "updatedAt": "2026-07-28T02:47:11.000Z",
+          "uid": "35240-5bd170eb-64bd-4d8e-8967-6737c92ea26c"
+        }
+      ],
+      "id": "c8f3688f-0d80-4c25-9120-bcdc57d354b9",
+      "createdAt": "2026-07-28T02:47:11.000Z",
+      "updatedAt": "2026-07-28T02:47:11.000Z",
+      "uid": "35240-c8f3688f-0d80-4c25-9120-bcdc57d354b9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.restream.io/v2"
+    }
+  ]
+}

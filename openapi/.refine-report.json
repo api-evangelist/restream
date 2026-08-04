@@ -1,0 +1,22 @@
+{
+  "provider": "restream",
+  "sources": [
+    "restream-channels-api-openapi.yml",
+    "restream-events-api-openapi.yml",
+    "restream-platforms-api-openapi.yml",
+    "restream-stream-keys-api-openapi.yml",
+    "restream-user-api-openapi.yml"
+  ],
+  "outputs": [
+    "restream-channels-api-openapi.yml",
+    "restream-events-api-openapi.yml",
+    "restream-platforms-api-openapi.yml",
+    "restream-stream-keys-api-openapi.yml",
+    "restream-user-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
