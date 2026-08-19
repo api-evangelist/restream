@@ -1,0 +1,180 @@
+{
+  "item": [
+    {
+      "id": "71deb25d-2c6c-4324-8f7c-7cc2dc57d4da",
+      "name": "Stream Keys",
+      "description": {
+        "content": "Stream key and SRT URL management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90805a1f-9784-43ec-8ad5-c2eb090a883a",
+          "name": "Get Stream Key",
+          "request": {
+            "name": "Get Stream Key",
+            "description": {
+              "content": "Retrieve the authenticated user's stream key and SRT URL for live streaming.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "streamKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "profile.read channels.read channels.write stream.read events.read events.write chat.read"
+                },
+                {
+                  "key": "redirect_uri",
+                  "value": "https://api.restream.io/oauth/token"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.restream.io/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.restream.io/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f69a5ac9-081a-4d93-82b9-73dd3f87120f",
+              "name": "User stream key and SRT URL",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "streamKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"streamKey\": \"re_xxx_xxx\",\n  \"srtUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10c96b13-c347-4aa3-b44c-d7d27596511f",
+              "name": "Unauthorized - invalid or missing access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "streamKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 370,\n  \"status\": 5423,\n  \"code\": 2817,\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.restream.io/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cf3f0981-8100-4fa5-b7f3-ddca77e613b8",
+    "name": "Restream Channels Stream Keys API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Restream API enables developers to build live streaming integrations and manage multistreaming to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. Supports REST endpoints for user profile, channels, stream keys, events, and real-time WebSocket updates.\n\nContact Support:\n Email: developers@restream.io",
+      "type": "text/plain"
+    }
+  }
+}

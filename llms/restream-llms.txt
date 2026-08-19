@@ -1,0 +1,97 @@
+# Restream API
+
+> Build live streaming integrations with the Restream API. Manage events, chat, clips, and multistream to 30+ platforms via REST and WebSocket.
+
+## Docs
+
+- [Restream API — Getting Started](/guide.md): Start building with the Restream API. Learn how OAuth 2.0 authentication works, explore the available REST and WebSocket endpoints, and make your first request.
+- [Getting Started](/guide/getting-started.md): Set up your first Restream API app in minutes — create an application, copy your client ID and secret, add a redirect URI, and start the OAuth 2.0 flow.
+- [Restream API Authentication (OAuth 2.0)](/authentication.md): Authenticate with the Restream API using OAuth 2.0. Learn the authorization code flow — request user consent, exchange the code for tokens, and refresh or revoke them.
+- [Overview](/authentication/overview.md): Authenticate Restream API requests with OAuth 2.0 — the full flow from authorization and code exchange to refreshing and revoking tokens, step by step.
+- [Authorize Dialog](/authentication/authorize-dialog.md): Start the Restream OAuth 2.0 flow by sending users to the login and authorization dialog with your client ID, redirect URI, and a CSRF state token.
+- [Capture the Code](/authentication/capture-the-code.md): Handle the Restream OAuth 2.0 redirect: read the code, scope, and state query parameters and verify state to prevent CSRF before exchanging the code.
+- [Code Exchange](/authentication/code-exchange.md): Exchange a Restream OAuth 2.0 authorization code for an access and refresh token pair, sending client credentials via a Basic Auth header or form body.
+- [Refreshing Tokens](/authentication/refreshing-tokens.md): Refresh an expired Restream access token with the refresh_token grant. Each refresh returns a new pair — access tokens last 1 hour, refresh tokens 1 year.
+- [Revoking Tokens](/authentication/revoking-tokens.md): Revoke a Restream access or refresh token when a user logs out. Revoking either token invalidates its paired token, ending the integration's access.
+- [Restream Public API](/public-api.md): Explore the Restream Public API — list every supported streaming platform and find the best RTMP ingest server for low-latency delivery. No authentication required.
+- [Platforms](/public-api/platforms.md): List every streaming platform Restream supports — Twitch, YouTube, and more — with each platform's ID, URL, and logo. A public endpoint that needs no authentication.
+- [Ingest Servers](/public-api/servers.md): List all of Restream's RTMP ingest servers — the ingestion points where users send their streams. A public endpoint that requires no authentication.
+- [Restream Private API](/private-api.md): The Restream Private API exposes your account profile, selected ingest, stream key, and chat URL, plus a WebSocket for real-time streaming updates. Requires authentication.
+- [Profile](/private-api/profile.md): Retrieve the authenticated Restream user's profile, including their ID, username, and email. Requires the profile.read scope and authentication.
+- [Selected Ingest](/private-api/selected-ingest.md): Retrieve the ID of the Restream user's currently selected ingest server. Requires the channels.read scope and authentication.
+- [Stream Key](/private-api/stream-key.md): Retrieve the authenticated Restream user's stream key and SRT URL. The SRT URL is null when the account lacks SRT streaming access. Requires the stream.read scope.
+- [Chat URL](/private-api/chat-url.md): Retrieve the authenticated Restream user's embeddable chat URL. Requires the chat.read scope and authentication.
+- [Streaming Updates](/private-api/streaming-updates.md): Listen for real-time Restream streaming updates over WebSocket — the improved replacement for legacy stream status events. Requires an authenticated connection.
+- [Restream Channels API](/channels.md): Use the Restream Channels API to list, inspect, add, and delete the streaming destinations connected to a Restream account. Requires authentication.
+- [Channels](/channels/channels.md): List every streaming destination channel connected to a Restream account, with each channel's ID, platform, URL, and display name. Requires the channels.read scope.
+- [Channel](/channels/channel.md): Retrieve a single Restream streaming channel by ID, returning its platform, URL, and display name. Requires the channels.read scope and authentication.
+- [Add Channel](/channels/channel-add.md): Add a manually-configured streaming destination to a Restream account by platform ID, stream URL, and key. Supports custom RTMP, Instagram, Steam, and more.
+- [Delete Channel](/channels/channel-delete.md): Delete a streaming channel from a Restream account by ID. Removing a channel used by upcoming or in-progress events stops delivery to that destination.
+- [Restream Events API](/events.md): Schedule, control, and review live streams with the Restream Events API — create events, add destinations, fetch stream keys, list upcoming and past events, and get recordings.
+- [Create Event](/events/event-create.md): Create a scheduled Restream event the user can stream to later, setting its type, title, and start time. Requires the stream.write scope and authentication.
+- [Add Event Destination](/events/event-destination-add.md): Attach a channel to a Restream event as a streaming destination, choosing its orientation. Requires the stream.write scope and authentication.
+- [Delete Event Destination](/events/event-destination-delete.md): Remove a destination from a scheduled Restream event by ID. Requires the stream.write scope and authentication.
+- [Upcoming Events](/events/upcoming-events.md): List a Restream user's upcoming events through the API, filtering by source type or scheduled status. Requires the stream.read scope and authentication.
+- [In Progress Events](/events/in-progress-events.md): List a Restream user's currently live, in-progress events, with each event's status, destinations, and timestamps. Requires the stream.read scope.
+- [Events History](/events/events-history.md): Retrieve a paginated list of a Restream user's finished and missed events, with each event's status, destinations, and timestamps. Requires the stream.read scope.
+- [Event Chat History](/events/event-chat-history.md): Retrieve an event's chat history through the API, paged with an opaque cursor or seeked by timestamp. Each message includes its platform, channel, author, and text. Requires the chat.read scope.
+- [Event](/events/event.md): Retrieve a single Restream event by ID, returning its status, title, destinations, and timestamps. Requires the stream.read scope and authentication.
+- [Event Stream Key](/events/event-stream-key.md): Retrieve the RTMP stream key and SRT URL for a Restream event by ID. The SRT URL is null when the account lacks SRT access. Requires the stream.read scope.
+- [Event SRT Stream Keys](/events/event-srt-stream-keys.md): Retrieve SRT stream keys and URL for a Restream event by ID. SRT is available only on Business and custom Enterprise plans. Requires the stream.read scope.
+- [Event Recordings](/events/events-recordings.md): List the recordings for a Restream event, grouped into primary videos, secondary portrait videos, and audio tracks. Requires the storage.read scope.
+- [Recording Download URL](/events/events-recording-download-url.md): Generate a temporary download URL for a Restream event recording file, using the fileName from the event recordings endpoint. Requires the storage.read scope.
+- [Chat History Download URL](/events/events-chat-history-download-url.md): Generate a one-time, time-limited URL to download an event's full chat history export. Requires the chat.read scope and authentication.
+- [Event Recording Transcriptions](/events/events-recording-transcriptions.md): List the transcriptions generated for a Restream event's recordings, each with a processing status and a download URL once completed. Requires the storage.read scope.
+- [Restream Live Stream Analytics API](/analytics.md): Measure stream performance with the Restream Analytics API — pull viewer counts and chat-engagement metrics per event, in total and broken down by channel. Requires authentication.
+- [Live Stream Analytics - Viewers](/analytics/event-analytics-viewers.md): Get viewer analytics for a Restream live stream event — average and peak concurrent viewers, total views, watched time, and per-minute series. Requires stream.read.
+- [Live Stream Analytics - Chat Messages](/analytics/event-analytics-messages.md): Get chat message analytics for a Restream live stream event — totals and per-channel breakdowns of messages, unique chatters, and per-minute counts. Requires stream.read.
+- [Restream Storage API](/storage.md): Access files saved to Restream storage with the Storage API — list stored files, inspect a single file's metadata, and generate temporary download URLs. Requires authentication.
+- [Storage Files](/storage/storage-files.md): List every file in a Restream user's video storage with its processing status, size, and duration. Requires the storage.read scope and authentication.
+- [Storage File](/storage/storage-file.md): Retrieve details of a single file in a Restream user's video storage, including its processing status. Requires the storage.read scope and authentication.
+- [Storage File Download URL](/storage/storage-file-download-url.md): Generate a temporary download URL for a specific file in a Restream user's video storage. Requires the storage.read scope and authentication.
+- [Restream Clips API](/clips.md): Turn streams into short clips with the Restream Clips API — list clip projects, retrieve a project with all its generated clips and posting history, and download any clip.
+- [Create Project](/clips/clips-project-create.md): Create a Restream clip project from a Video Storage file, past event recording, or public URL. Restream analyzes the video and generates clips asynchronously. Requires the clips.write scope and authentication.
+- [Clip Projects](/clips/clips-projects.md): List a Restream user's clip projects through the API — paginated, with limit, cursor, and sort options. Requires the clips.read scope and authentication.
+- [Project Details](/clips/clips-project-details.md): Retrieve a Restream clip project by ID, including all generated clips and their posting history. Requires the clips.read scope and authentication.
+- [Download Clip](/clips/clips-download.md): Generate a temporary download URL for a specific Restream clip by clip ID. Requires the clips.read scope and authentication.
+- [Restream Studio API](/studio.md): Manage Restream Studio assets through the API — audio tracks, brand overlays, captions, fonts, QR codes, and tickers — to customize your live broadcasts programmatically.
+- [Restream Studio Audio API](/studio/audio.md): List the audio assets available in Restream Studio — countdown music and background tracks you can add to a live broadcast. Requires authentication.
+- [List Countdown Music](/studio/audio/studio-audio-countdown-music.md): List the countdown music tracks available in Restream Studio, each with encoded source variants and optional brand links. Requires the studio.read scope.
+- [List Audio Backgrounds](/studio/audio/studio-audio-backgrounds.md): Retrieve the Restream Studio audio background catalog — organized into categories, groups, and channels — to start ambient audio playback. Requires the studio.read scope.
+- [Restream Studio Brands API](/studio/brands.md): List the brand overlays available in Restream Studio so you can apply consistent, branded visuals to your live broadcasts. Requires authentication.
+- [List Brands](/studio/brands/studio-brands.md): List a Restream Studio user's brands, used to organize captions, tickers, and QR codes. Requires the studio.read scope and authentication.
+- [Restream Studio Captions API](/studio/captions.md): Manage on-screen captions in Restream Studio through the API — list captions, get a single caption, and create, update, or delete them for your live broadcasts.
+- [List Captions](/studio/captions/studio-captions.md): List a Restream Studio user's captions, each with optional brand links. Requires the studio.read scope and authentication.
+- [Get Caption](/studio/captions/studio-caption.md): Retrieve a single Restream Studio caption by ID for the authenticated user. Requires the studio.read scope and authentication.
+- [Create Caption](/studio/captions/studio-caption-create.md): Create a Restream Studio caption for the authenticated user, with primary and optional secondary text. Requires the studio.write scope and authentication.
+- [Update Caption](/studio/captions/studio-caption-update.md): Update the text or secondary text of a Restream Studio caption by ID. Requires the studio.write scope and authentication.
+- [Delete Caption](/studio/captions/studio-caption-delete.md): Permanently delete a Restream Studio caption by ID for the authenticated user. Requires the studio.write scope and authentication.
+- [Restream Studio Fonts API](/studio/fonts.md): List the fonts available in Restream Studio so you can style captions, tickers, and other on-screen text consistently across your live broadcasts. Requires authentication.
+- [List Fonts](/studio/fonts/studio-fonts.md): List the fonts available in Restream Studio, each with weight and style variants and rendered previews. Requires the studio.read scope and authentication.
+- [Restream Studio QR Codes API](/studio/qr-codes.md): Manage on-screen QR codes in Restream Studio through the API — list, get, create, update, delete, and reorder QR codes to drive viewers to links during live broadcasts.
+- [List QR Codes](/studio/qr-codes/studio-qr-codes.md): List a Restream Studio user's QR codes, each linked to a brand. Requires the studio.read scope and authentication.
+- [Get QR Code](/studio/qr-codes/studio-qr-code.md): Retrieve a single Restream Studio QR code by ID for the authenticated user. Requires the studio.read scope and authentication.
+- [Create QR Code](/studio/qr-codes/studio-qr-code-create.md): Create a Restream Studio QR code for the authenticated user, with a title, link, and display settings. Requires the studio.write scope and authentication.
+- [Update QR Code](/studio/qr-codes/studio-qr-code-update.md): Update the title, link, or display settings of a Restream Studio QR code by ID. Requires the studio.write scope and authentication.
+- [Delete QR Code](/studio/qr-codes/studio-qr-code-delete.md): Permanently delete a Restream Studio QR code by ID for the authenticated user. Requires the studio.write scope and authentication.
+- [Reorder QR Codes](/studio/qr-codes/studio-qr-code-reorder.md): Set the display order of a Restream Studio user's QR codes by passing an ordered array of IDs. Requires the studio.write scope and authentication.
+- [Restream Studio Tickers API](/studio/tickers.md): Manage scrolling tickers in Restream Studio through the API — list, get, create, update, delete, and reorder tickers to display rolling messages during live broadcasts.
+- [List Tickers](/studio/tickers/studio-tickers.md): List a Restream Studio user's tickers, each with optional brand links. Requires the studio.read scope and authentication.
+- [Get Ticker](/studio/tickers/studio-ticker.md): Retrieve a single Restream Studio ticker by ID for the authenticated user. Requires the studio.read scope and authentication.
+- [Create Ticker](/studio/tickers/studio-ticker-create.md): Create a Restream Studio ticker for the authenticated user. Requires the studio.write scope and authentication.
+- [Update Ticker](/studio/tickers/studio-ticker-update.md): Update the text of a Restream Studio ticker by ID. Requires the studio.write scope and authentication.
+- [Delete Ticker](/studio/tickers/studio-ticker-delete.md): Permanently delete a Restream Studio ticker by ID for the authenticated user. Requires the studio.write scope and authentication.
+- [Reorder Tickers](/studio/tickers/studio-ticker-reorder.md): Set the display order of a Restream Studio user's tickers by passing an ordered array of IDs. Requires the studio.write scope and authentication.
+- [Restream Chat API](/chat.md): Build live chat integrations with the Restream Chat API — connect over WebSocket to receive unified chat events across platforms, send replies, take actions, and relay messages.
+- [Chat](/chat/getting-started.md): Connect to the Restream chat WebSocket to receive a unified stream of messages, replies, and relays from Twitch, YouTube, and 30+ platforms in real time.
+- [Event Sources](/chat/event-sources.md): See which platforms Restream Chat supports — Twitch, YouTube, Discord, Kick, and more — with their event source IDs and read, reply, and relay capabilities.
+- [Actions](/chat/actions.md): Reference for every action the Restream chat WebSocket sends — heartbeat, connection_info, event, and reply/relay status — with their TypeScript interfaces.
+- [Connections](/chat/connections.md): Track Restream chat connections from connection_info and connection_closed actions, maintain a connection map, and handle connection error reasons per event source.
+- [Events](/chat/events.md): Reference for every incoming Restream chat event type — text messages, super chats, stickers, memberships, and more — with payload details for each event source.
+- [Reply](/chat/reply.md): Follow the Restream Chat reply lifecycle — reply_created, reply_accepted, reply_confirmed, and reply_failed — plus common versus direct replies and failure reasons.
+- [Relay](/chat/relay.md): Understand Restream Chat relay, which syncs messages across connected platforms via the Restream Bot, and track relay_accepted, relay_confirmed, and relay_failed actions.
+- [MCP Server](/mcp-server.md): Connect AI assistants and agents to a Restream account with the remote, OAuth-secured Restream MCP server.
+
+## Applications
+
+- [My Applications](/apps/index.md): Build live streaming integrations with the Restream API. Manage events, chat, clips, and multistream to 30+ platforms via REST and WebSocket.

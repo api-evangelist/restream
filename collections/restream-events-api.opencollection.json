@@ -1,0 +1,153 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Restream Channels Events API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Upcoming Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/event/upcoming",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve all upcoming live events for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "List In-Progress Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/event/in-progress",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve all currently active live events for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "List Event History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/event/history",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of events to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of events to skip for pagination"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve historical live events for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Get Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/event/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve details for a specific event by its ID."
+        },
+        {
+          "info": {
+            "name": "Get Event Stream Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/event/:id/streamKey",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve the stream key for a specific event."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

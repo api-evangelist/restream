@@ -1,0 +1,104 @@
+{
+  "item": [
+    {
+      "id": "65f314cf-bd24-48da-81b6-296d6550ddd0",
+      "name": "Platforms",
+      "description": {
+        "content": "Public platform information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cd6ccc87-675e-4f92-9f53-f67e89e2efe6",
+          "name": "List All Platforms",
+          "request": {
+            "name": "List All Platforms",
+            "description": {
+              "content": "Returns all streaming platforms supported by Restream. This is a public endpoint that does not require authentication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "platform",
+                "all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6025482-487a-4b0c-af76-5d86ba8d987c",
+              "name": "List of supported streaming platforms",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "platform",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"Twitch\",\n    \"url\": \"https://twitch.tv\",\n    \"image\": {\n      \"png\": \"string\",\n      \"svg\": \"string\"\n    }\n  },\n  {\n    \"id\": 1,\n    \"name\": \"Twitch\",\n    \"url\": \"https://twitch.tv\",\n    \"image\": {\n      \"png\": \"string\",\n      \"svg\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.restream.io/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "320b81cf-29c0-433a-affa-fdae75f323c1",
+    "name": "Restream Channels Platforms API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Restream API enables developers to build live streaming integrations and manage multistreaming to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. Supports REST endpoints for user profile, channels, stream keys, events, and real-time WebSocket updates.\n\nContact Support:\n Email: developers@restream.io",
+      "type": "text/plain"
+    }
+  }
+}

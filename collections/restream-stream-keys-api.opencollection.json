@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Restream Channels Stream Keys API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stream Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Stream Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restream.io/v2/user/streamKey",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.restream.io/oauth/authorize",
+              "accessTokenUrl": "https://api.restream.io/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve the authenticated user's stream key and SRT URL for live streaming."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
