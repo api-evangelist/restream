@@ -29,7 +29,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/restream/refs/heads/main/apis.yml
 created: '2025-03-15'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: restream:restream-streaming-updates-api
   name: Restream Streaming Updates API
