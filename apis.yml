@@ -110,6 +110,8 @@ apis:
   humanURL: https://developers.restream.io
   baseURL: https://api.restream.io/v2
   tags:
+  - Platform
+  tags_raw:
   - Platforms
   properties:
   - type: OpenAPI
