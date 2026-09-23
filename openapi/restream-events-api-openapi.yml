@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Restream Channels Events API
+  title: Restream Events API
   description: The Restream API enables developers to build live streaming integrations and manage multistreaming to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. Supports REST endpoints for user profile, channels, stream keys, events, and real-time WebSocket updates.
   version: v2
   contact:
@@ -147,19 +147,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized - invalid or missing access token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     StreamKey:
       type: object
@@ -169,26 +156,10 @@ components:
           description: RTMP stream key
           example: re_xxx_xxx
         srtUrl:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: SRT streaming URL, null if user does not have SRT access
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          description: HTTP status code
-        status:
-          type: integer
-        code:
-          type: integer
-          description: Application error code
-        message:
-          type: string
-          description: Human-readable error message
-        name:
-          type: string
-          description: Error type identifier
     Event:
       type: object
       properties:
@@ -209,20 +180,52 @@ components:
           - completed
           description: Current event status
         startedAt:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
           description: Event start time
         endedAt:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
           description: Event end time
         channels:
           type: array
           items:
             type: integer
           description: Channel IDs for this event
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: HTTP status code
+        status:
+          type: integer
+        code:
+          type: integer
+          description: Application error code
+        message:
+          type: string
+          description: Human-readable error message
+        name:
+          type: string
+          description: Error type identifier
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized - invalid or missing access token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

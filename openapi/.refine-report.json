@@ -1,11 +1,7 @@
 {
   "provider": "restream",
   "sources": [
-    "restream-channels-api-openapi.yml",
-    "restream-events-api-openapi.yml",
-    "restream-platforms-api-openapi.yml",
-    "restream-stream-keys-api-openapi.yml",
-    "restream-user-api-openapi.yml"
+    "_original/restream-openapi.yml"
   ],
   "outputs": [
     "restream-channels-api-openapi.yml",
@@ -17,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "restream-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "restream-channels-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "restream-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "restream-platforms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "restream-stream-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "restream-user-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
