@@ -154,29 +154,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized - invalid or missing access token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    ChannelUpdate:
-      type: object
-      properties:
-        active:
-          type: boolean
-          description: Enable or disable the channel
-        displayName:
-          type: string
-          description: Channel display name
     ChannelMetaUpdate:
       type: object
       properties:
@@ -208,6 +186,32 @@ components:
         name:
           type: string
           description: Error type identifier
+    ChannelMeta:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Channel identifier
+        title:
+          type: string
+          description: Stream title for this channel
+        description:
+          type: string
+          description: Stream description
+        tags:
+          type: array
+          items:
+            type: string
+          description: Stream tags
+    ChannelUpdate:
+      type: object
+      properties:
+        active:
+          type: boolean
+          description: Enable or disable the channel
+        displayName:
+          type: string
+          description: Channel display name
     Channel:
       type: object
       properties:
@@ -232,23 +236,19 @@ components:
         active:
           type: boolean
           description: Whether the channel is active
-    ChannelMeta:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Channel identifier
-        title:
-          type: string
-          description: Stream title for this channel
-        description:
-          type: string
-          description: Stream description
-        tags:
-          type: array
-          items:
-            type: string
-          description: Stream tags
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or missing access token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

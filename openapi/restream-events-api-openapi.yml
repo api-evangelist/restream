@@ -148,6 +148,23 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: HTTP status code
+        status:
+          type: integer
+        code:
+          type: integer
+          description: Application error code
+        message:
+          type: string
+          description: Human-readable error message
+        name:
+          type: string
+          description: Error type identifier
     StreamKey:
       type: object
       properties:
@@ -196,32 +213,15 @@ components:
           items:
             type: integer
           description: Channel IDs for this event
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          description: HTTP status code
-        status:
-          type: integer
-        code:
-          type: integer
-          description: Application error code
-        message:
-          type: string
-          description: Human-readable error message
-        name:
-          type: string
-          description: Error type identifier
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Unauthorized - invalid or missing access token
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized - invalid or missing access token
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:

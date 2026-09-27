@@ -79,6 +79,25 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: User identifier
+        email:
+          type: string
+          description: User email address
+        displayName:
+          type: string
+          description: User display name
+        username:
+          type: string
+          description: Username
+        createdAt:
+          type: string
+          format: date-time
+          description: Account creation timestamp
     TokenResponse:
       type: object
       properties:
@@ -114,25 +133,6 @@ components:
         name:
           type: string
           description: Error type identifier
-    UserProfile:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: User identifier
-        email:
-          type: string
-          description: User email address
-        displayName:
-          type: string
-          description: User display name
-        username:
-          type: string
-          description: Username
-        createdAt:
-          type: string
-          format: date-time
-          description: Account creation timestamp
   responses:
     Unauthorized:
       description: Unauthorized - invalid or missing access token
