@@ -98,6 +98,23 @@ components:
           type: string
           format: date-time
           description: Account creation timestamp
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: HTTP status code
+        status:
+          type: integer
+        code:
+          type: integer
+          description: Application error code
+        message:
+          type: string
+          description: Human-readable error message
+        name:
+          type: string
+          description: Error type identifier
     TokenResponse:
       type: object
       properties:
@@ -116,23 +133,6 @@ components:
         token_type:
           type: string
           description: Token type (Bearer)
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          description: HTTP status code
-        status:
-          type: integer
-        code:
-          type: integer
-          description: Application error code
-        message:
-          type: string
-          description: Human-readable error message
-        name:
-          type: string
-          description: Error type identifier
   responses:
     Unauthorized:
       description: Unauthorized - invalid or missing access token

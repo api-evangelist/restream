@@ -155,37 +155,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ChannelMetaUpdate:
-      type: object
-      properties:
-        title:
-          type: string
-          description: Stream title
-        description:
-          type: string
-          description: Stream description
-        tags:
-          type: array
-          items:
-            type: string
-          description: Stream tags
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          description: HTTP status code
-        status:
-          type: integer
-        code:
-          type: integer
-          description: Application error code
-        message:
-          type: string
-          description: Human-readable error message
-        name:
-          type: string
-          description: Error type identifier
     ChannelMeta:
       type: object
       properties:
@@ -203,15 +172,20 @@ components:
           items:
             type: string
           description: Stream tags
-    ChannelUpdate:
+    ChannelMetaUpdate:
       type: object
       properties:
-        active:
-          type: boolean
-          description: Enable or disable the channel
-        displayName:
+        title:
           type: string
-          description: Channel display name
+          description: Stream title
+        description:
+          type: string
+          description: Stream description
+        tags:
+          type: array
+          items:
+            type: string
+          description: Stream tags
     Channel:
       type: object
       properties:
@@ -236,15 +210,41 @@ components:
         active:
           type: boolean
           description: Whether the channel is active
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: HTTP status code
+        status:
+          type: integer
+        code:
+          type: integer
+          description: Application error code
+        message:
+          type: string
+          description: Human-readable error message
+        name:
+          type: string
+          description: Error type identifier
+    ChannelUpdate:
+      type: object
+      properties:
+        active:
+          type: boolean
+          description: Enable or disable the channel
+        displayName:
+          type: string
+          description: Channel display name
   responses:
-    Unauthorized:
-      description: Unauthorized - invalid or missing access token
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Unauthorized - invalid or missing access token
       content:
         application/json:
           schema:
