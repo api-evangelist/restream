@@ -36,19 +36,14 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or missing access token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    StreamKey:
-      type: object
-      properties:
-        streamKey:
-          type: string
-          description: RTMP stream key
-          example: re_xxx_xxx
-        srtUrl:
-          type:
-          - string
-          - 'null'
-          description: SRT streaming URL, null if user does not have SRT access
     Error:
       type: object
       properties:
@@ -66,13 +61,18 @@ components:
         name:
           type: string
           description: Error type identifier
-  responses:
-    Unauthorized:
-      description: Unauthorized - invalid or missing access token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    StreamKey:
+      type: object
+      properties:
+        streamKey:
+          type: string
+          description: RTMP stream key
+          example: re_xxx_xxx
+        srtUrl:
+          type:
+          - string
+          - 'null'
+          description: SRT streaming URL, null if user does not have SRT access
   securitySchemes:
     OAuth2:
       type: oauth2

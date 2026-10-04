@@ -155,37 +155,15 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ChannelMeta:
+    ChannelUpdate:
       type: object
       properties:
-        id:
-          type: integer
-          description: Channel identifier
-        title:
+        active:
+          type: boolean
+          description: Enable or disable the channel
+        displayName:
           type: string
-          description: Stream title for this channel
-        description:
-          type: string
-          description: Stream description
-        tags:
-          type: array
-          items:
-            type: string
-          description: Stream tags
-    ChannelMetaUpdate:
-      type: object
-      properties:
-        title:
-          type: string
-          description: Stream title
-        description:
-          type: string
-          description: Stream description
-        tags:
-          type: array
-          items:
-            type: string
-          description: Stream tags
+          description: Channel display name
     Channel:
       type: object
       properties:
@@ -210,6 +188,37 @@ components:
         active:
           type: boolean
           description: Whether the channel is active
+    ChannelMetaUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Stream title
+        description:
+          type: string
+          description: Stream description
+        tags:
+          type: array
+          items:
+            type: string
+          description: Stream tags
+    ChannelMeta:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Channel identifier
+        title:
+          type: string
+          description: Stream title for this channel
+        description:
+          type: string
+          description: Stream description
+        tags:
+          type: array
+          items:
+            type: string
+          description: Stream tags
     Error:
       type: object
       properties:
@@ -227,24 +236,15 @@ components:
         name:
           type: string
           description: Error type identifier
-    ChannelUpdate:
-      type: object
-      properties:
-        active:
-          type: boolean
-          description: Enable or disable the channel
-        displayName:
-          type: string
-          description: Channel display name
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Unauthorized - invalid or missing access token
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized - invalid or missing access token
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
