@@ -149,6 +149,12 @@ apis:
   - type: Authentication
     url: https://developers.restream.io/guide/getting-started
 common:
+  - type: Plans
+    url: plans/restream-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/restream-rate-limits.yml
+  - type: FinOps
+    url: finops/restream-finops.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/restream/overview
   - type: AgenticAccess
