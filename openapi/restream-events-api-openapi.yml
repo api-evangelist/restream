@@ -147,20 +147,24 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized - invalid or missing access token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: HTTP status code
+        status:
+          type: integer
+        code:
+          type: integer
+          description: Application error code
+        message:
+          type: string
+          description: Human-readable error message
+        name:
+          type: string
+          description: Error type identifier
     Event:
       type: object
       properties:
@@ -197,23 +201,6 @@ components:
           items:
             type: integer
           description: Channel IDs for this event
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          description: HTTP status code
-        status:
-          type: integer
-        code:
-          type: integer
-          description: Application error code
-        message:
-          type: string
-          description: Human-readable error message
-        name:
-          type: string
-          description: Error type identifier
     StreamKey:
       type: object
       properties:
@@ -226,6 +213,19 @@ components:
           - string
           - 'null'
           description: SRT streaming URL, null if user does not have SRT access
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or missing access token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2
