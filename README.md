@@ -1,4 +1,4 @@
-# Restream (restream)
+# Restream
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,108 +66,190 @@
 
 Restream is a multistreaming platform that enables content creators and businesses to simultaneously broadcast live video to 30+ platforms including YouTube, Twitch, Facebook, LinkedIn, and more. The platform offers REST APIs and WebSocket connections for managing streams, channels, events, and chat.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/restream/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/restream/refs/heads/main/apis.yml)
+**Areas:** Broadcast · Chat · Content Delivery · Live Streaming · Multistreaming · Video Streaming
 
-## Scope
+## Restream on APIs.io
 
-- **Type:** Index
+Everything profiled for Restream is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/restream/](https://apis.io/providers/restream/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-- Broadcast
-- Chat
-- Content Delivery
-- Live Streaming
-- Multistreaming
-- Video Streaming
+- [Restream Streaming Updates API](https://apis.io/apis/restream/restream-streaming-updates-api/) — WebSocket API for real-time streaming status updates. Connect to wss://streaming.api.restream.io/ws with an OAuth access token to receive incoming and…
+- [Restream Chat API](https://apis.io/apis/restream/restream-chat-api/) — WebSocket API for accessing and managing Restream Chat. Receive real-time chat messages from all connected streaming platforms (Twitch, YouTube, Facebook,…
+- [Restream Channels API](https://apis.io/apis/restream/restream-channels-api/) — Channel management and configuration
+- [Restream Events API](https://apis.io/apis/restream/restream-events-api/) — Live event management and scheduling
+- [Restream Platforms API](https://apis.io/apis/restream/restream-platforms-api/) — Public platform information
+- [Restream Stream Keys API](https://apis.io/apis/restream/restream-stream-keys-api/) — Stream key and SRT URL management
+- [Restream User API](https://apis.io/apis/restream/restream-user-api/) — User profile and account management
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-03-15
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Restream API
+Model Context Protocol servers that expose the API to agents.
 
-REST API for managing Restream channels, stream keys, events, and user profiles. Uses OAuth2 authorization code flow for authentication with scopes for profile, channels, streams, events, and chat. Base URL is https://api.restream.io/v2.
+- [restream](https://apis.io/servers/restream/restream/)
 
-- **Human URL:** [https://developers.restream.io](https://developers.restream.io)
-- **Base URL:** `https://api.restream.io/v2`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Channels
-- Events
-- Live Video
-- OAuth2
-- Streaming
-- Users
+- [Restream Agentic Access](https://apis.io/agentic-access/restream/restream-agentic-access/)
 
-#### Properties
+#### JSON Schema (3)
 
-- [Documentation](https://developers.restream.io/docs)
-- [Authentication](https://developers.restream.io/guide/getting-started)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/restream/refs/heads/main/openapi/restream-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/restream.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/restream.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The data models the API reads and writes.
 
-### Restream Streaming Updates API
+- [Channel](https://apis.io/schemas/restream/restream-channel/)
+- [Event](https://apis.io/schemas/restream/restream-event/)
+- [Platform](https://apis.io/schemas/restream/restream-platform/)
 
-WebSocket API for real-time streaming status updates. Connect to wss://streaming.api.restream.io/ws with an OAuth access token to receive incoming and outgoing stream events, platform status updates, and viewer counts in real time.
+#### JSON Structure (2)
 
-- **Human URL:** [https://developers.restream.io/private-api/streaming-updates](https://developers.restream.io/private-api/streaming-updates)
-- **Base URL:** `wss://streaming.api.restream.io`
+Data models expressed in JSON Structure.
 
-#### Tags
+- [Restream Channel Structure](https://apis.io/json-structure/restream/restream-channel-structure/)
+- [Restream Event Structure](https://apis.io/json-structure/restream/restream-event-structure/)
 
-- Real-Time
-- Streaming
-- WebSocket
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://developers.restream.io/private-api/streaming-updates)
-- [Postman Collection](collections/restream.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/restream.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Restream Context](https://apis.io/jsonld/restream/restream-context/)
 
-### Restream Chat API
+#### Vocabulary (1)
 
-WebSocket API for accessing and managing Restream Chat. Receive real-time chat messages from all connected streaming platforms (Twitch, YouTube, Facebook, Discord, LinkedIn, DLive) in a unified event stream. Supports reply and relay actions.
+The provider's domain terms, defined.
 
-- **Human URL:** [https://developers.restream.io/chat/getting-started](https://developers.restream.io/chat/getting-started)
-- **Base URL:** `wss://chat.api.restream.io`
+- [Restream Vocabulary](https://apis.io/vocabularies/restream/restream-vocabulary/)
 
-#### Tags
+#### Examples (4)
 
-- Chat
-- Real-Time
-- Streaming
-- WebSocket
+Example requests and responses.
 
-#### Properties
+- [Restream Get Channel Example](https://apis.io/examples/restream/restream-get-channel-example/)
+- [Restream Get Stream Key Example](https://apis.io/examples/restream/restream-get-stream-key-example/)
+- [Restream List Platforms Example](https://apis.io/examples/restream/restream-list-platforms-example/)
+- [Restream Refresh Token Example](https://apis.io/examples/restream/restream-refresh-token-example/)
 
-- [Documentation](https://developers.restream.io/chat/getting-started)
-- [Postman Collection](collections/restream.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/restream.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Collections (11)
 
-## Common Properties
+Postman and Open Collection request collections.
 
-- [LinkedIn](https://www.linkedin.com/company/restreamio)
-- [Terms of Service](https://restream.io/terms)
-- [Privacy Policy](https://restream.io/privacy)
-- [Sign Up](https://app.restream.io/sign-up)
-- [Login](https://app.restream.io/login)
-- [Blog](https://restream.io/blog)
-- [Pricing](https://restream.io/pricing)
+- [Restream API](https://apis.io/collections/restream/open-restream/)
+- [Restream Channels API](https://apis.io/collections/restream/open-restream-channels-api/)
+- [Restream Channels Events API](https://apis.io/collections/restream/open-restream-events-api/)
+- [Restream Channels Platforms API](https://apis.io/collections/restream/open-restream-platforms-api/)
+- [Restream Channels Stream Keys API](https://apis.io/collections/restream/open-restream-stream-keys-api/)
+- [Restream Channels User API](https://apis.io/collections/restream/open-restream-user-api/)
+- [Restream Channels API](https://apis.io/collections/restream/postman-restream-channels-api/)
+- [Restream Channels Events API](https://apis.io/collections/restream/postman-restream-events-api/)
+- [Restream Channels Platforms API](https://apis.io/collections/restream/postman-restream-platforms-api/)
+- [Restream Channels Stream Keys API](https://apis.io/collections/restream/postman-restream-stream-keys-api/)
+- [Restream Channels User API](https://apis.io/collections/restream/postman-restream-user-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Restream — jsonschema rules](https://apis.io/rules/restream/restream-jsonschema-spectral-rules/)
+- [Restream API Rules](https://apis.io/rules/restream/restream-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Restream Authentication](https://apis.io/security/restream/restream-authentication/)
+- [Restream Domain Security](https://apis.io/security/restream/restream-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Restream Scopes](https://apis.io/scopes/restream/restream-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Restream Plans Pricing](https://apis.io/plans/restream/restream-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Restream Rate Limits](https://apis.io/rate-limits/restream/restream-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Restream Finops](https://apis.io/finops/restream/restream-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://restream.io)
-- [Developer  Portal](https://developers.restream.io)
-- [Authentication](https://developers.restream.io/guide/getting-started)
-- [GitHub Organization](https://github.com/restreamio)
-- [Integrations](https://restream.io/integrations/)
-- [L L Ms Txt](https://developers.restream.io/llms.txt)
+- [Pricing](https://restream.io/pricing)
+- [Blog](https://restream.io/blog)
+- [Terms of service](https://restream.io/terms)
+- [Privacy policy](https://restream.io/privacy)
+- [GitHub](https://github.com/restreamio)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 35.0** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 55.2 |
+| Contract governance | 13.6 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 25.0 |
+| Access clarity | 25.0 |
+
+**Agent readiness 35.3** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 26.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/restream/](https://apis.io/providers/restream/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Restream: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/restream/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
